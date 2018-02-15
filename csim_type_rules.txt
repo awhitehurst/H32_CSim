@@ -1,0 +1,29 @@
+Rule 1: All referenced variables must be declared before they are used.
+Rule 2: All declared variables have unique names within a the containing scope.
+Rule 3: A program is type-correct if its declared functions are type-correct,
+        its declarations are type-correct and its body's scope is type correct.
+Rule 4: A function is type-correct if its parameter list is type-correct and
+        its return type is type-correct and matches the type of any return statement
+        and its body's scope is type-correct with respect to its declarations and parameters
+        and its name and the number and/or type of its parameters constitute a
+        unique function declaration.
+Rule 5: A scope is type-correct if its declarations are type-correct and its
+        statements are type-correct with respect to its declarations or to any
+        declarations in a parent scope.
+Rule 6: A declaration is type-correct if any initializing expression is type-
+        correct with respect to the declared type of the variable.
+Rule 7: A statement is type-correct with respect to its scope if:
+        it is an assignment statement and the target variable is declared within
+        the current scope or a parent scope; its source expression is type-equivalent
+        with the declared type of the variable
+        it is a procedure call and the function name is defined and the number 
+        and types of the arguments are type-equivalent with the number and types
+        of the function's parameters
+Rule 8: An expression is type-correct if:
+        it is a variable reference and the variable is declared within the scope,
+        it is a literal (then the type of the expression is the type of the literal)
+        it is a function call (then the type of the call is the return type of the function)
+        it is a unary expression and the type and the type of the argument matches
+        the expected type of the unary operator,
+        it is a binary expression and the types of the arguments matches the expected
+        types for the binary operator

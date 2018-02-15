@@ -1,0 +1,50 @@
+<Program>	::=	[<Functs>] 'main' '(' ')' <BlockState>
+<Functs>    	::=     <Funct> | <Funct> <Functs>
+<Funct>         ::=     <Type> <Name> '(' [<ParamList>] ')' <Blockstate>
+<ParamList>     ::=     <Param> [ ',' <ParamList> ]
+<Param>         ::=     <Type> <Name>
+<DeclStats>     ::=     <DeclStat> [ <DeclStats> ]
+<DeclStat>      ::=     <Decl> | <Statement>
+<Decl>          ::=     <VarDecl> | <ArrayDecl>
+<VarDecl>	::=	<Type> <Name> [ '=' <Expression> ]';'
+<ArrayDecl>     ::=     <Type> <Name> '[' <Expression> ']' [ '=' '{' <ExprList> '}' ]';'
+<Type>		::=     <SType> [ '*' ]*
+<SType>         ::=	'int' | 'bool' | 'char' | 'void'
+<Statement>	::=	<SimpleState> | <BlockState>
+<SimpleState>   ::=     <AssignState> ';'| <ForState> | <Proccall> ';' | <IfState> |
+                        <RetState> ';'| <WhileState> | <IncDecState> ';'
+<BlockState>    ::=	'{' <DeclStats> '}'
+<AssignState>   ::=	[ '*' ]* <VarRef> = <Expression>
+<ForState>	::=	'for' '(' <Assignment> ';' <Expression> ';' <Assignment> ')' <Statement>
+<Proccall>      ::=     <Name> '(' [<ExprList>] ')'
+<Ifstate>	::=	'if' '(' <Expression> '' <Statement> [ 'else' <Statement> ]
+<RetState>      ::=     'return' <Expression>
+<WhileState>    ::=	'while' '(' <Expression> ')' <Statement>
+<IncDecState>   ::=     '++' <VarRef> | '--' <VarRef>
+<ExprList>	::=	<Expression> [ ',' <ExprList> ]
+<Expression>    ::=	<Conjunction> [ '||' <Conjunction> ]
+<Conjunction>   ::=     <Equality> [ '&&' <Equality> ]
+<Equality>	::=	<Relation> [ <EquOp> <Relation> ]
+<Relation>	::=	<Addition> [ <RelOp> <Addition> ]
+<Addition>	::=	<Term> [ <AddOp> <Term> ]
+<Term>		::=	<Primary> [ <MulOp> <Primary> ]
+<Primary>	::=	[ <UniOp> ] <VarRef> | <Literal> | '(' <Expression> ')' | <Funcall>
+<Literal>	::=	<Integer> | <Boolean> | <Character> | <String> | 'null'
+<EquOp>		::=	'==' | '!='
+<RelOp>		::=	'<' | '>' | '<=' | '>='
+<AddOp>		::=	'+' | '-'
+<MulOp>		::=	'*' | '/' | '%'
+<UniOp>		::=	'+' | '-' | '!' | '++' | '--' | '*' | '&'
+<Funcall>       ::=     <Name> '(' [<ExprList>] ')'
+<VarRef>	::=	<Name> [ '[' <Expression> ']' ]
+<Name>		::=	<Letter> [ <LDUs> ]
+<LDUs>		::=	<LDU> [ <LDUs> ]
+<LDU>		::=	<Letter> | <Digit> | '_'
+<Integer>	::=	<Digit> [ <Integer> ]
+<Boolean>	::=	true | false
+<Character>	::=	'\''<Char>'\''
+<String>	::=	"" | "<Chars>"
+<Chars>		::=	<Char> | <Chars><Char>
+<Char>		::=	--any symbol from ASCII
+<Letter>	::=	A | B | C | ... X | Y | Z | a | b | c | ... x | y | z
+<Digit>		::=	0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
