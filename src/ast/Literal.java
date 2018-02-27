@@ -20,11 +20,13 @@ public class Literal extends Expression {
     public Literal() {
     }
 
+    //create toke and type
     public Literal(Token symbol, Type type) {
         super(symbol);
         this.type = type;
     }
 
+    //case types 
     public Object toObject() {
         switch (type.getTypeCode()) {
             case Type.INT:
@@ -38,14 +40,17 @@ public class Literal extends Expression {
         }
     }
 
+    //make a int
     public int toInt() {
         return Integer.parseInt(symbol.getSymbol());
     }
 
+    //make char 
     public String toChar() {
         return symbol.getSymbol();
     }
 
+    //make bool
     public boolean toBool() {
         return Boolean.parseBoolean(symbol.getSymbol());
     }

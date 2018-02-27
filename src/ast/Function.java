@@ -42,6 +42,7 @@ public class Function extends ASTNode {
         this.params = params;
         this.body = body;
     }
+
 /**
  * Retrieves the parameters of the function
  * @return and ArrayList containing the parameters.
@@ -49,10 +50,12 @@ public class Function extends ASTNode {
     public ArrayList<Param> getParams() {
         return params;
     }
+
 /**
  * Sets the Parameter ArrayList of the Function.
  * @param params 
  */
+
     public void setParams(ArrayList<Param> params) {
         this.params = params;
     }
@@ -60,6 +63,7 @@ public class Function extends ASTNode {
  * Adds a new Parameter to the list of parameters.
  * @param param The Parameter to be added
  */
+
     public void addParam(Param param) {
         params.add(param);
     }

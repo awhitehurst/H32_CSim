@@ -10,7 +10,7 @@ import parser.Scope;
  */
 public class VarRef extends Expression {
 
-    //
+    
     private Name v;
     private Expression index;
     private int indirect = 0;
@@ -69,6 +69,7 @@ public class VarRef extends Expression {
         return "@" + scope.label() + this.getVariable().getName();
     }
     
+    //get relOffset value from scope
     public int getRelativeOffset(){
         return scope.getRelOffset(getVariable().getName());
     }
@@ -119,6 +120,7 @@ public class VarRef extends Expression {
         return getType(false);
     }
     
+    //set pointers 
     public Type getType(boolean isTarget){
         
         Type t = new Type(scope.getType(v.getName()).toAST());

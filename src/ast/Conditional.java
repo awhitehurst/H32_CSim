@@ -13,18 +13,22 @@ import java.util.ArrayList;
  */
 public class Conditional extends Statement {
 
+    //get esential block
     public Block getElseBlock() {
         return elseBlock;
     }
 
+    //set essential block
     public void setElseBlock(Block elseBlock) {
         this.elseBlock = elseBlock;
     }
 
+    //get IfBlock value
     public Block getIfBlock() {
         return ifBlock;
     }
 
+    //set IfBlock value
     public void setIfBlock(Block ifBlock) {
         this.ifBlock = ifBlock;
     }

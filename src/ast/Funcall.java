@@ -21,36 +21,44 @@ public class Funcall extends Expression {
     public Funcall() {
     }
 
+    //create token args and string for name 
     public Funcall(Token symbol, Name name, ExprList args) {
         super(symbol);
         this.name = name;
         this.args = args;
     }
 
+    //return value of args 
     public ExprList getArgs() {
         return args;
     }
 
+    //set value of args 
     public void setArgs(ExprList args) {
         this.args = args;
     }
 
+    //add args to token 
     public void addArg(Expression arg) {
         args.add(arg);
     }
 
+    //return name
     public Name getName() {
         return name;
     }
 
+    //set value for name 
     public void setName(Name name) {
         this.name = name;
     }
 
+    //return value of scope 
     public Scope getScope() {
         return scope;
     }
 
+    //set the value of scope 
     public void setScope(Scope scope) {
         this.scope = scope;
     }

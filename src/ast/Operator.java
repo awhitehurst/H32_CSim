@@ -10,6 +10,7 @@ import lexer.Token;
  */
 public class Operator extends ASTNode {
 
+    //create operator string 
     public Operator(Token symbol) {
         super(symbol);
         opString = symbol.getSymbol();

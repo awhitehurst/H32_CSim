@@ -16,24 +16,29 @@ public class Assignment extends Statement {
     public Assignment() {
     }
 
+    //create assigment 
     public Assignment(Token symbol) {
         super(symbol);
     }
 
+    //set assignment boundries 
     public Assignment(VarRef v, Expression source) {
         super();
         this.varRef = v;
         this.expr = source;
     }
 
+    //return expression 
     public Expression getExpr() {
         return expr;
     }
 
+    //set expression
     public void setExpr(Expression expr) {
         this.expr = expr;
     }
 
+    //return variable referenace 
     public VarRef getVarRef() {
         return varRef;
     }

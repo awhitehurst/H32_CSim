@@ -15,6 +15,7 @@ import lexer.Token;
  */
 public class ArrayDecl extends VarDecl {
 
+    //create array 
     public ArrayDecl(Token symbol, Name variable, Type type) {
         super(symbol, variable, type);
     }
@@ -26,19 +27,23 @@ public class ArrayDecl extends VarDecl {
     public ArrayDecl() {
     }
 
+    //determine size of array 
     public ArrayDecl(Token symbol, Name variable, Type type, Expression size) {
         super(symbol, variable, type);
         this.size = size;
     }
 
+    //return size 
     public Expression getSize() {
         return size;
     }
 
+    //set size of expression
     public void setSize(Expression size) {
         this.size = size;
     }
 
+    //return list
     public ExprList getInitList() {
         return initList;
     }
