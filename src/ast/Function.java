@@ -22,6 +22,7 @@ public class Function extends ASTNode {
     public Function() {
     }
 
+    //set parameters  
     public Function(Token symbol, Name v, Type t, ArrayList<Param> params, Block body) {
         super(symbol);
         this.name = v;
@@ -30,30 +31,37 @@ public class Function extends ASTNode {
         this.body = body;
     }
 
+    //return params from list 
     public ArrayList<Param> getParams() {
         return params;
     }
 
+    //set value for the param in the list 
     public void setParams(ArrayList<Param> params) {
         this.params = params;
     }
 
+    //add param to list 
     public void addParam(Param param) {
         params.add(param);
     }
 
+    //return value type
     public Type getType() {
         return type;
     }
 
+    //set value of t
     public void setType(Type t) {
         this.type = t;
     }
 
+    //return name 
     public Name getName() {
         return name;
     }
 
+    //set value for name at value v
     public void setName(Name v) {
         this.name = v;
     }
@@ -74,6 +82,7 @@ public class Function extends ASTNode {
         this.body = body;
     }
 
+    
     public Scope getScope() {
         return scope;
     }

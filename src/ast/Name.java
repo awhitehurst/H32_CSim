@@ -20,6 +20,7 @@ public class Name extends ASTNode {
     public Name() {
     }
     
+    //return string 
     public String getName(){
         return symbol.getSymbol();
     }

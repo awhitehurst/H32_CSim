@@ -9,12 +9,14 @@ import lexer.Token;
  */
 public class Type extends ASTNode implements Comparable {
 
+    //set values for various types 
     public static final int VOID = 0;
     public static final int BOOL = 1;
     public static final int CHAR = 2;
     public static final int INT = 3;
     public static final int CHARP = 4;
 
+    //set locations 
     public static final Type VOID_TYPE = new Type(VOID, null);
     public static final Type BOOL_TYPE = new Type(BOOL, null);
     public static final Type CHAR_TYPE = new Type(CHAR, null);
@@ -43,6 +45,7 @@ public class Type extends ASTNode implements Comparable {
         this(t.typeCode, t.pointer, t.symbol, t.stat);
     }
 
+    //set type values 
     public Type(int typeCode, int pointer, Token symbol, boolean stat) {
         super(symbol);
         this.typeCode = typeCode;
@@ -71,6 +74,7 @@ public class Type extends ASTNode implements Comparable {
         return pointer > 0;
     }
 
+    //lex and return proper type 
     public static int toTypeCode(Token symbol) {
         lexer.SType stype = symbol.getSType();
         switch (stype) {
@@ -99,6 +103,7 @@ public class Type extends ASTNode implements Comparable {
         stat = aStatic;
     }
 
+    //check to see if types are compatiable 
     public boolean isTypeCompatible(Type t) {
         return typeCode == t.typeCode && pointer == t.pointer;
     }

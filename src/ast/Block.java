@@ -15,16 +15,19 @@ import parser.Scope;
  */
 public class Block extends Statement {
 
+    //create array blocks
     public Block() {
         decls = new ArrayList<>();
         stats = new ArrayList<>();
         scope = null;
     }
 
+    //add decls to array
     public void addDecl(Declaration d) {
         decls.add(d);
     }
 
+    //return decls in array list 
     public ArrayList<Declaration> getDecls() {
         return decls;
     }
@@ -33,14 +36,17 @@ public class Block extends Statement {
         this.decls = decls;
     }
 
+    //add stats to arraylist 
     public void addStat(Statement s) {
         stats.add(s);
     }
 
+    //return stats from arraylist 
     public ArrayList<Statement> getStats() {
         return stats;
     }
 
+    //set stats value
     public void setStats(ArrayList<Statement> stats) {
         this.stats = stats;
     }
@@ -65,6 +71,7 @@ public class Block extends Statement {
         }
     }
 
+    //determine the size of the stack
     private int calculateTotalStackSize() {
         int totalSize = 0;
         if (getDecls() != null) {
@@ -86,6 +93,7 @@ public class Block extends Statement {
         return totalSize;
     }
 
+    //assign address
     private int assignRelativeAddresses(int offset) {
         if (getDecls() != null) {
             for (Declaration decl : getDecls()) {

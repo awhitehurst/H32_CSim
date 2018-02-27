@@ -26,6 +26,7 @@ public class Proccall extends Statement {
         this.args = args;
     }
 
+    
     public ExprList getArgs() {
         return args;
     }
@@ -38,10 +39,12 @@ public class Proccall extends Statement {
         args.add(arg);
     }
 
+    //return name 
     public Name getName() {
         return name;
     }
 
+    //set name value 
     public void setName(Name name) {
         this.name = name;
     }

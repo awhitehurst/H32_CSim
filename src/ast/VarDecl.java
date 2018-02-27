@@ -53,6 +53,8 @@ public class VarDecl extends Declaration {
         return getType().getAllocSize();
     }
 
+    //return proper name ans scope 
+    
     public String getQualifiedVariableName() {
         return "@" + scope.label() + this.getVariable().getName();
     }

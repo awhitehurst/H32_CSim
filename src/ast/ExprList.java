@@ -15,30 +15,37 @@ import java.util.ListIterator;
  * @author Alan
  */
 public class ExprList extends ASTNode {
+    //create arrylist for expression
     public ExprList(){
         exprs = new ArrayList<>();
     }
     
+    //size of array
     public int size(){
         return exprs.size();
     }
     
+    //add expression to list
     public void add(Expression expr){
         exprs.add(expr);
     }
     
+    //retreive a expression from the list
     public Expression get(int index){
         return (Expression) exprs.get(index);
     }
     
+    //set expression at a specific index
     public void set(int index, Expression expr){
         exprs.set(index, expr);
     }
     
+    //iterate the array list 
     public Iterator<Expression> iterator(){
         return exprs.iterator();
     }
     
+    //return itorated expression list 
     public ListIterator<Expression> listIterator(){
         return exprs.listIterator();
     }

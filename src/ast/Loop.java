@@ -21,42 +21,52 @@ public class Loop extends Statement {
         super(symbol);
     }
 
+    //return value for block 
     public Block getBody() {
         return body;
     }
 
+    //set value of body
     public void setBody(Block body) {
         this.body = body;
     }
 
+    //return value of test 
     public Expression getTest() {
         return test;
     }
 
+    //set value of test 
     public void setTest(Expression test) {
         this.test = test;
     }
 
+    //check to see if init in null
     public boolean hasInit() {
         return init != null;
     }
 
+    //return value of init 
     public Assignment getInit() {
         return init;
     }
 
+    //set value of init 
     public void setInit(Assignment init) {
         this.init = init;
     }
 
+    //has it updated 
     public boolean hasUpdate() {
         return update != null;
     }
 
+    //return updated values 
     public Assignment getUpdate() {
         return update;
     }
 
+    //set values for update 
     public void setUpdate(Assignment update) {
         this.update = update;
     }

@@ -25,26 +25,32 @@ public abstract class Binary extends Expression {
         this.rhs = rhs;
     }
 
+    //return lhs
     public Expression getLhs() {
         return lhs;
     }
 
+    //set lhs
     public void setLhs(Expression lhs) {
         this.lhs = lhs;
     }
 
+    //return operator
     public Operator getOp() {
         return op;
     }
 
+    //set operator
     public void setOp(Operator op) {
         this.op = op;
     }
 
+    //return rhs
     public Expression getRhs() {
         return rhs;
     }
 
+    //set rhs
     public void setRhs(Expression rhs) {
         this.rhs = rhs;
     }

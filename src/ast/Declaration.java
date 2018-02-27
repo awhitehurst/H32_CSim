@@ -23,10 +23,12 @@ public abstract class Declaration extends ASTNode {
     
     public abstract int getAllocSize();
 
+    //return scope value 
     public Scope getScope() {
         return scope;
     }
 
+    //set the value of the scope
     public void setScope(Scope scope) {
         this.scope = scope;
     }

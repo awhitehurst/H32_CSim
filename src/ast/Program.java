@@ -27,26 +27,32 @@ public class Program extends ASTNode {
         this.body = body;
     }
 
+    //add to array list 
     public void addFunct(Function f) {
         functs.add(f);
     }
 
+    //set values in array list 
     public void setFuncts(ArrayList<Function> functs) {
         this.functs = functs;
     }
 
+    //add declaration token 
     public void addDecl(Declaration d) {
         body.addDecl(d);
     }
 
+    
     public void addStat(Statement s) {
         body.addStat(s);
     }
 
+    //
     public void setBody(Block body) {
         this.body = body;
     }
 
+    //return body values 
     public Block getBody() {
         return body;
     }

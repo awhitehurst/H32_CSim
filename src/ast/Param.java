@@ -21,22 +21,27 @@ public class Param extends Expression {
         return type;
     }
 
+    //set type value 
     public void setType(Type type) {
         this.type = type;
     }
 
+    //return variable 
     public Name getVariable() {
         return variable;
     }
 
+   //set variable vlaue 
     public void setVariable(Name variable) {
         this.variable = variable;
     }
 
+    //return scope 
     public Scope getScope() {
         return scope;
     }
 
+    //set scope vlaue 
     public void setScope(Scope scope) {
         this.scope = scope;
     }
