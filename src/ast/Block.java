@@ -10,45 +10,71 @@ import java.util.Iterator;
 import parser.Scope;
 
 /**
- *
+ * A Block contains an ArrayList of statements, an ArrayList of declarations, and a scope.
  * @author Alan
  */
 public class Block extends Statement {
-
+/**
+ * Constructor creates an empty Block.
+ */
     public Block() {
         decls = new ArrayList<>();
         stats = new ArrayList<>();
         scope = null;
     }
-
+/**
+ * Adds a Declaration.
+ * @param d 
+ */
     public void addDecl(Declaration d) {
         decls.add(d);
     }
-
+/**
+ * Retrieves all declarations in this block
+ * @return the ArrayList containing the declarations.
+ */
     public ArrayList<Declaration> getDecls() {
         return decls;
     }
-
+/**
+ * Sets the ArrayList of Declarations to a new ArrayList of Declarations.
+ * @param decls the new ArrayList of Declarations.
+ */
     public void setDecls(ArrayList<Declaration> decls) {
         this.decls = decls;
     }
-
+/**
+ * Adds a Statement
+ * @param s the statement to be added.
+ */
     public void addStat(Statement s) {
         stats.add(s);
     }
-
+/**
+ * Returns an ArrayList containing all Statements.
+ * @return 
+ */
     public ArrayList<Statement> getStats() {
         return stats;
     }
-
+/**
+ * Sets the ArrayList containing Statements to a new provided ArrayList.
+ * @param stats The new ArrayList of Statements.
+ */
     public void setStats(ArrayList<Statement> stats) {
         this.stats = stats;
     }
-
+/**
+ * Returns the scope of the block
+ * @return 
+ */
     public Scope getScope() {
         return scope;
     }
-
+/**
+ * Sets the scope of the block to a new scope.
+ * @param scope The new Scope.
+ */
     public void setScope(Scope scope) {
         this.scope = scope;
     }

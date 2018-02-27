@@ -33,7 +33,10 @@ public class Proccall extends Statement {
     public void setArgs(ExprList args) {
         this.args = args;
     }
-
+/**
+ * 
+ * @param arg 
+ */
     public void addArg(Expression arg) {
         args.add(arg);
     }

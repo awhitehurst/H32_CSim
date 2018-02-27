@@ -9,7 +9,7 @@ import lexer.Token;
 import parser.Scope;
 
 /**
- *
+ * A Funcall is a special kind of Expression, containing a Token, a name, and an ExprList of arguments.
  * @author Alan
  */
 public class Funcall extends Expression {

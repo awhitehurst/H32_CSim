@@ -8,27 +8,42 @@ import java.util.ArrayList;
 import lexer.Token;
 
 /**
- *
+ * A Return is a special kind of statement that contains a Token, and may contain an Expression.
  * @author Alan
  */
 public class Return extends Statement {
-
+/**
+ * Creates empty Return
+ */
     public Return() {
     }
-
+/**
+ * Creates Return with an associated Token
+ * @param symbol 
+ */
     public Return(Token symbol) {
         super(symbol);
     }
-
+/**
+ * Creates Return with a Token and an Expression
+ * @param symbol the Token to use
+ * @param value the Expression to store.
+ */
     public Return(Token symbol, Expression value) {
         super(symbol);
         this.value = value;
     }
-
+/**
+ * Retrieves the Expression of the Return
+ * @return the Expression.
+ */
     public Expression getValue() {
         return value;
     }
-
+/**
+ * Sets the value of the Expression.
+ * @param value the new Expression.
+ */
     public void setValue(Expression value) {
         this.value = value;
     }

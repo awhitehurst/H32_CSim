@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import lexer.Token;
 
 /**
- *
+ * Contains information about a type of variable, including its Token, its level of pointer it is, the type of the symbol, and whether the variable is static.
+ * Needs work
  * @author Alan
  */
 public class Type extends ASTNode implements Comparable {
@@ -20,7 +21,10 @@ public class Type extends ASTNode implements Comparable {
     public static final Type CHAR_TYPE = new Type(CHAR, null);
     public static final Type INT_TYPE = new Type(INT, null);
     public static final Type CHARP_TYPE = new Type(CHAR, 1, null);
-
+/**
+ * Uses a Token to construct a Type.
+ * @param symbol the symbol to be contained in the type.
+ */
     public Type(Token symbol) {
         super(symbol);
         this.typeCode = toTypeCode(symbol);
@@ -30,19 +34,37 @@ public class Type extends ASTNode implements Comparable {
             pointer = 1;
         }
     }
-
+/**
+ * Uses a typeCode and a Token to construct a type.
+ * @param typeCode
+ * @param symbol 
+ */
     public Type(int typeCode, Token symbol) {
         this(typeCode, 0, symbol);
     }
-    
+    /**
+     * Uses a typeCode, pointer and Token to construct a type.
+     * @param typeCode
+     * @param pointer
+     * @param symbol 
+     */
     public Type(int typeCode, int pointer, Token symbol){
         this(typeCode, pointer, symbol, false);
     }
-    
+ /**
+  * Uses a specified type to create an identical type.
+  * @param t 
+  */   
     public Type(Type t){
         this(t.typeCode, t.pointer, t.symbol, t.stat);
     }
-
+/**
+ * Fully specified Constructor.
+ * @param typeCode
+ * @param pointer
+ * @param symbol
+ * @param stat 
+ */
     public Type(int typeCode, int pointer, Token symbol, boolean stat) {
         super(symbol);
         this.typeCode = typeCode;
@@ -50,27 +72,46 @@ public class Type extends ASTNode implements Comparable {
         this.symbol = symbol;
         this.stat = stat;
     }
-
+/**
+ * Sets the typeCode to provided typeCode
+ * @param typeCode 
+ */
     public void setType(int typeCode) {
         this.typeCode = typeCode;
     }
-
+/**
+ * Returns the typeCode
+ * @return typeCode
+ */
     public int getTypeCode() {
         return typeCode;
     }
-
+/**
+ * Returns the pointer
+ * @return pointer
+ */
     public int getPointer() {
         return pointer;
     }
-
+/**
+ * Sets the pointer to provided value
+ * @param pointer the new value.
+ */
     public void setPointer(int pointer) {
         this.pointer = pointer;
     }
-
+/**
+ * Checkers whether this type is a pointer.
+ * @return true if it is, else false.
+ */
     public boolean isPointer() {
         return pointer > 0;
     }
-
+/**
+ * Translates the symbol of a Token from an SType to a TypeCode
+ * @param symbol the Token to be identified
+ * @return the appropriate identification.
+ */
     public static int toTypeCode(Token symbol) {
         lexer.SType stype = symbol.getSType();
         switch (stype) {
@@ -86,11 +127,17 @@ public class Type extends ASTNode implements Comparable {
                 return VOID;
         }
     }
-    
+    /**
+     * Returns 1.
+     * @return 1.
+     */
     public int getAllocSize(){
         return 1;
     }
-    
+    /**
+     * Checks whether the Type is static.
+     * @return true if it is static, otherwise false.
+     */
     public boolean isStatic(){
         return stat;
     }
@@ -98,7 +145,11 @@ public class Type extends ASTNode implements Comparable {
     public void setStatic(boolean aStatic) {
         stat = aStatic;
     }
-
+    /**
+     * Checks whether another type is compatible
+     * @param t the Type to be checked.
+     * @return true if compatible, or false if not compatible.
+     */
     public boolean isTypeCompatible(Type t) {
         return typeCode == t.typeCode && pointer == t.pointer;
     }
@@ -156,7 +207,7 @@ public class Type extends ASTNode implements Comparable {
         Type ot = (Type)o;
         return typeCode-ot.typeCode;
     }
-
+    
     @Override
     public void typeCheck(ArrayList<String> msgs) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

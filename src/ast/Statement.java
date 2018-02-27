@@ -8,14 +8,19 @@ import java.util.ArrayList;
 import lexer.Token;
 
 /**
- *
+ * Statement contains a Token.
  * @author Alan
  */
 public abstract class Statement extends ASTNode {
-
+/**
+ * Creates an empty statement.
+ */
     public Statement() {
     }
-
+/**
+ * Creates a Statement with the provided Token.
+ * @param symbol The Token provided.
+ */
     public Statement(Token symbol) {
         super(symbol);
     }

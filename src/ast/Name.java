@@ -8,18 +8,26 @@ import java.util.ArrayList;
 import lexer.Token;
 
 /**
- *
+ * Wrapper class for a token that we know is the name of a function or variable.
  * @author Alan
  */
 public class Name extends ASTNode {
-
+/**
+ * Sets symbol to the provided symbol
+ * @param symbol the symbol to be stored.
+ */
     public Name(Token symbol) {
         super(symbol);
     }
-
+/**
+ * Unspecified Constructor.
+ */
     public Name() {
     }
-    
+    /**
+     * Returns the symbol stored in the Token.
+     * @return the name
+     */
     public String getName(){
         return symbol.getSymbol();
     }

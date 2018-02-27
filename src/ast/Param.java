@@ -8,11 +8,13 @@ import java.util.ArrayList;
 import parser.Scope;
 
 /**
- *
+ * A Param is a kind of Expression with a Type, Name, and Scope
  * @author Alan
  */
 public class Param extends Expression {
-
+/**
+ * Creates empty Param.
+ */
     public Param() {
     }
 
@@ -20,19 +22,31 @@ public class Param extends Expression {
     public Type getType() {
         return type;
     }
-
+/**
+ * Sets the type of the Param to a given type.
+ * @param type the new type.
+ */
     public void setType(Type type) {
         this.type = type;
     }
-
+/**
+ * Returns the name of the variable in the Expression
+ * @return the name of the variable.
+ */
     public Name getVariable() {
         return variable;
     }
-
+/**
+ * Sets the variable to a new name.
+ * @param variable the new name.
+ */
     public void setVariable(Name variable) {
         this.variable = variable;
     }
-
+/**
+ * Gets the scope of the 
+ * @return 
+ */
     public Scope getScope() {
         return scope;
     }
