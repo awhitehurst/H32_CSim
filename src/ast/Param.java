@@ -40,21 +40,17 @@ public class Param extends Expression {
  * Sets the variable to a new name.
  * @param variable the new name.
  */
-
     public void setVariable(Name variable) {
         this.variable = variable;
     }
-
 /**
  * Gets the scope of the 
  * @return 
  */
-
     public Scope getScope() {
         return scope;
     }
 
-    //set scope vlaue 
     public void setScope(Scope scope) {
         this.scope = scope;
     }

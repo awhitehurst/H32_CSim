@@ -91,7 +91,6 @@ public class Block extends Statement {
         }
     }
 
-    //determine the size of the stack
     private int calculateTotalStackSize() {
         int totalSize = 0;
         if (getDecls() != null) {
@@ -113,7 +112,6 @@ public class Block extends Statement {
         return totalSize;
     }
 
-    //assign address
     private int assignRelativeAddresses(int offset) {
         if (getDecls() != null) {
             for (Declaration decl : getDecls()) {

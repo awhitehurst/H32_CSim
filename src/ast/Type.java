@@ -10,14 +10,12 @@ import lexer.Token;
  */
 public class Type extends ASTNode implements Comparable {
 
-    //set values for various types 
     public static final int VOID = 0;
     public static final int BOOL = 1;
     public static final int CHAR = 2;
     public static final int INT = 3;
     public static final int CHARP = 4;
 
-    //set locations 
     public static final Type VOID_TYPE = new Type(VOID, null);
     public static final Type BOOL_TYPE = new Type(BOOL, null);
     public static final Type CHAR_TYPE = new Type(CHAR, null);
