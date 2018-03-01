@@ -11,7 +11,7 @@ import csim.Generator;
 import java.util.ArrayList;
 
 /**
- *
+ * Creates a representation of the And "&&" operation.
  * @author alan.whitehurst
  */
 public class LandExpression extends Binary {

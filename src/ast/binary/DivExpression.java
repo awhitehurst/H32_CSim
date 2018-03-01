@@ -10,7 +10,7 @@ import ast.Type;
 import java.util.ArrayList;
 
 /**
- *
+ * Generates the assembly language code for a Division expression.
  * @author alan.whitehurst
  */
 public class DivExpression extends Binary {

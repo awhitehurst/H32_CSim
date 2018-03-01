@@ -11,7 +11,7 @@ import csim.Generator;
 import java.util.ArrayList;
 
 /**
- *
+ * Creates an Assembly code representation of the Greater Than Binary.
  * @author alan.whitehurst
  */
 public class GtExpression extends Binary {

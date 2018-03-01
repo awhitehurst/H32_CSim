@@ -11,7 +11,7 @@ import csim.Generator;
 import java.util.ArrayList;
 
 /**
- *
+ * Creates an Assembly Code definition of the Greater than or Equal to expression.
  * @author alan.whitehurst
  */
 public class GeqExpression extends Binary {

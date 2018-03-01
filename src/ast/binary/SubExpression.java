@@ -11,7 +11,7 @@ import ast.Type;
 import java.util.ArrayList;
 
 /**
- *
+ * Creates Assembly language for the subtraction operation.
  * @author alan.whitehurst
  */
 public class SubExpression extends Binary {

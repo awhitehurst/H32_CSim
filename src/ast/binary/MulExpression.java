@@ -5,7 +5,7 @@ import ast.Type;
 import java.util.ArrayList;
 
 /**
- *
+ * Creates an Assembly Language representation of the multiplication operator.
  * @author alan.whitehurst
  */
 public class MulExpression extends Binary {

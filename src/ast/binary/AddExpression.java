@@ -6,7 +6,7 @@ import ast.Type;
 import java.util.ArrayList;
 
 /**
- *
+ * Creates an Assembly language representation of the addition operation.
  * @author alan.whitehurst
  */
 public class AddExpression extends Binary {

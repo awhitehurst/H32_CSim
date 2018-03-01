@@ -11,7 +11,7 @@ import csim.Generator;
 import java.util.ArrayList;
 
 /**
- *
+ * Creates Assembly Languages representation for the == operator.
  * @author alan.whitehurst
  */
 public class EqExpression extends Binary {
