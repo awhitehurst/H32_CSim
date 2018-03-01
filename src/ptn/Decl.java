@@ -19,18 +19,22 @@ public abstract class Decl extends PTNode {
     public Decl() {
     }
     
+    //return type value 
     public Type getType(){
         return (Type) children.get(0);
     }
     
+    //set value type 
     public void setType(Type t){
         children.set(0,t);
     }
     
+    //return name 
     public Name getName(){
         return (Name) children.get(1);
     }
     
+    //set name of value 
     public void setName(Name name){
         children.set(1, name);
     }
@@ -39,10 +43,12 @@ public abstract class Decl extends PTNode {
         return children.get(2)!=null;
     }
 
+    //return scope value 
     public Scope getScope() {
         return scope;
     }
 
+    //set value of scope
     public void setScope(Scope scope) {
         this.scope = scope;
     }

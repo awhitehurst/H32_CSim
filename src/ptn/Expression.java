@@ -14,34 +14,42 @@ public class Expression extends PTNode {
         super(3);
     }
 
+    //return Lhs expression value 
     public Expression getLhs() {
         return (Expression) children.get(0);
     }
 
+    //set Lhs expression value 
     public void setLhs(Expression e) {
         children.set(0, e);
     }
 
+    //return operator value
     public Operator getOp() {
         return (Operator) children.get(1);
     }
 
+    //set operator value 
     public void setOp(Operator op) {
         children.set(1, op);
     }
 
+    //return Rhs expression value 
     public Expression getRhs() {
         return (Expression) children.get(2);
     }
 
+    //set Rhs expression value 
     public void setRhs(Expression e) {
         children.set(2, e);
     }
 
+    //check to see an operator has a value 
     public boolean hasOp() {
         return children.get(1) != null;
     }
 
+    //checks to see if Rhs has a value 
     public boolean hasRhs() {
         return children.get(2) != null;
     }
