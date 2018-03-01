@@ -1,0 +1,38 @@
+void print(int x){}
+void print(char c){}
+
+void printTo(int x){
+    int i;
+    int j=0;
+    for(i=0;i<x;i=i+1){
+        print(i);
+        print('\n');
+    }
+}
+
+int increment(int x){
+    return (x + 1);
+}
+
+main(){
+    // this is a comment
+    int x = 10;
+    int *y;
+    y = &x;
+    *y = increment(x);
+    *y = x + 3;
+    for(x=0;x<10;x=x+1){
+        printTo(increment(x));
+        {
+            int x = 1000;
+            print(x);
+            print('\n');
+        }
+        {
+            int y;
+            y = x;
+            print(y);
+            print('\n');
+        }
+    }
+}
