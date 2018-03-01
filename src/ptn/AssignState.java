@@ -14,6 +14,7 @@ public class AssignState extends Statement {
         super(2);
     }
     
+    
     public VarRef getIdent(){
         return (VarRef) children.get(0);
     }
@@ -22,10 +23,12 @@ public class AssignState extends Statement {
         children.set(0,ident);
     }
     
+    //get expression
     public Expression getExpression(){
         return (Expression) children.get(1);
     }
 
+    //set expression 
     public void setExpression(Expression expr) {
         children.set(1, expr);
     }

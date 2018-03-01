@@ -12,18 +12,22 @@ public class Funct extends PTNode {
         super(4);
     }
 
+    //return value type
     public Type getType() {
         return (Type) children.get(0);
     }
 
+    //set value type 
     public void setType(Type t) {
         children.set(0, t);
     }
 
+    //return value name 
     public Name getName() {
         return (Name) children.get(1);
     }
 
+    //set value name 
     public void setName(Name n) {
         children.set(1, n);
     }
@@ -36,30 +40,37 @@ public class Funct extends PTNode {
         }
     }
 
+    //return param list values 
     public ParamList getParamList() {
         return (ParamList) children.get(2);
     }
 
+    //set param laist vlaues 
     public void setParamList(ParamList p) {
         children.set(2, p);
     }
 
+    //return block 
     public Block getBody() {
         return (Block) children.get(3);
     }
 
+    //set block value 
     public void setBody(Block b) {
         children.set(3, b);
     }
 
+    //return header if body is empty 
     public boolean isHeader() {
         return getBody().isEmpty();
     }
 
+    //return scope value 
     public Scope getScope() {
         return scope;
     }
 
+    //set scope value 
     public void setScope(Scope scope) {
         this.scope = scope;
     }

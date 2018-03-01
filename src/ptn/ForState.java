@@ -14,18 +14,22 @@ public class ForState extends Statement {
         super(4);
     }
     
+    // return init value 
     public AssignState getInit(){
         return (AssignState) children.get(0);
     }
     
+    //set init value 
     public void setInit(AssignState init){
         children.set(0, init);
     }
     
+    //return test expression value 
     public Expression getTest(){
         return (Expression) children.get(1);
     }
     
+    //set test expression value 
     public void setTest(Expression test){
         children.set(1,test);
     }
@@ -38,10 +42,12 @@ public class ForState extends Statement {
         children.set(2,incr);
     }
     
+    //rerutn block body value  
     public Block getBody(){
         return (Block) children.get(3);
     }
 
+    //set block body value 
     public void setBody(Block body) {
         children.set(3,body);
     }
