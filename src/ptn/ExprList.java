@@ -14,14 +14,17 @@ public class ExprList extends PTNode {
     public ExprList(){
     }
     
+    //add expression to array 
     public void addExpr(Expression expr){
         children.add(expr);
     }
     
+    //return expression from array at specific point 
     public Expression getExpr(int index){
         return (Expression) children.get(index);
     }
     
+    //set expression at specific point 
     public void setExpr(int index, Expression expr){
         children.set(index, expr);
     }

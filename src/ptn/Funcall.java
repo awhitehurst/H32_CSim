@@ -16,30 +16,37 @@ public class Funcall extends Expression {
         super();
     }
 
+    //return name 
     public Name getName() {
         return (Name) children.get(0);
     }
 
+    //set name 
     public void setName(Name name) {
         children.set(0, name);
     }
 
+    //return args value  
     public ExprList getArgs() {
         return (ExprList) children.get(1);
     }
 
+    //set args value 
     public void setArgs(ExprList args) {
         children.set(1, args);
     }
 
+    //does args have a value 
     public boolean hasArgs() {
         return children.get(1) != null;
     }
 
+    //return scope value 
     public Scope getScope() {
         return scope;
     }
 
+    //set scope value 
     public void setScope(Scope scope) {
         this.scope = scope;
     }

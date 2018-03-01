@@ -18,30 +18,37 @@ public class DeclStats extends PTNode {
         stats = new ArrayList<Statement>();
     }
 
+    //return decls array values 
     public ArrayList<Decl> getDecls() {
         return decls;
     }
 
+    //set decls array value 
     public void setDecls(ArrayList<Decl> decls) {
         this.decls = decls;
     }
 
+    //return stats array
     public ArrayList<Statement> getStats() {
         return stats;
     }
 
+    //set stats array value 
     public void setStats(ArrayList<Statement> stats) {
         this.stats = stats;
     }
     
+    //add decl value to array 
     public void addDecl(Decl decl){
         decls.add(decl);
     }
     
+    //add stat value to array 
     public void addStat(Statement stat){
         stats.add(stat);
     }
     
+    // check to see if array is empty 
     public boolean isEmpty(){
         return decls.isEmpty() && stats.isEmpty();
     }
@@ -65,6 +72,7 @@ public class DeclStats extends PTNode {
         throw new UnsupportedOperationException("toAST not supported by DeclStats");
     }
     
+    //itorate declaration array 
     public ArrayList<ast.Declaration> toDeclarations(){
         ArrayList<ast.Declaration> declarations = new ArrayList<ast.Declaration>();
         Iterator<Decl> it = decls.iterator();
@@ -75,6 +83,7 @@ public class DeclStats extends PTNode {
         return declarations;
     }
     
+    //itorate statments array 
     public ArrayList<ast.Statement> toStatements(){
         ArrayList<ast.Statement> statements = new ArrayList<ast.Statement>();
         Iterator<Statement> it = stats.iterator();

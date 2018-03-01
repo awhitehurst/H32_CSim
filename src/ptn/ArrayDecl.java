@@ -21,14 +21,17 @@ public class ArrayDecl extends Decl {
         setScope(v.getScope());
     }
     
+    //get expression size 
     public Expression getSize(){
         return (Expression) children.get(2);
     }
     
+    //set expression size 
     public void setSize(Expression expr){
         children.set(2, expr);
     }
     
+    //check to see if expression has a size 
     public boolean hasSize(){
         return children.get(2)!=null;
     }

@@ -17,22 +17,27 @@ public class Block extends Statement {
         super(1);
     }
     
+    //return body of delecration state 
     public DeclStats getBody(){
         return (DeclStats) children.get(0);
     }
     
+    //set body of decleration state 
     public void setBody(DeclStats s){
         children.set(0, s);
     }
     
+    //check to see if body is empty 
     public boolean isEmpty(){
         return getBody().isEmpty();
     }
 
+    //return scope value 
     public Scope getScope() {
         return scope;
     }
 
+    //set scope value 
     public void setScope(Scope scope) {
         this.scope = scope;
     }
