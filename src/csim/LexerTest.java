@@ -8,11 +8,7 @@ import lexer.Token;
  * @author alan.whitehurst
  */
 public class LexerTest {
-    /**
-     * This is the main Method of the LexerTest class 
-     * For Testing the Lexer package
-     * @param args unused
-     */
+    
     public static void main(String [] args){
                 if (args.length != 1) {
             System.err.println("usage: LexerTest <filename>");
