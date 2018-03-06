@@ -8,25 +8,40 @@ import java.util.ArrayList;
 import lexer.Token;
 
 /**
- *
+ *This class takes an expression and returns it to the correct type
  * @author Alan
  */
 public class Literal extends Expression {
+    
 
+    /**
+     * Set the symbol for the binar
+     * @param symbol 
+     */
     public Literal(Token symbol) {
         super(symbol);
     }
 
+    /**
+     * creates an empty literal
+     */
     public Literal() {
     }
 
-    //create toke and type
+   /**
+    * 
+    * @param symbol this is a token 
+    * @param type this is a type 
+    */
     public Literal(Token symbol, Type type) {
         super(symbol);
         this.type = type;
     }
 
-    //case types 
+    /**
+     * creates cases depending on the type of the expression 
+     * @return 
+     */
     public Object toObject() {
         switch (type.getTypeCode()) {
             case Type.INT:
@@ -40,17 +55,23 @@ public class Literal extends Expression {
         }
     }
 
-    //make a int
+    /**
+     * return parsed int value 
+     * @return 
+     */
     public int toInt() {
         return Integer.parseInt(symbol.getSymbol());
     }
 
-    //make char 
+    //return the char symbol  
     public String toChar() {
         return symbol.getSymbol();
     }
 
-    //make bool
+    /**
+     * returned the parsed boolean expression 
+     * @return 
+     */
     public boolean toBool() {
         return Boolean.parseBoolean(symbol.getSymbol());
     }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ast;
 
 import java.util.ArrayList;
@@ -10,44 +6,75 @@ import java.util.ListIterator;
 import lexer.Token;
 
 /**
- *
+ *Creates an array decleration for a simple c code  that extends a variable declaration 
  * @author Alan
  */
 public class ArrayDecl extends VarDecl {
 
-    //create array 
+    /**
+     * Creates an array useing the paramaters of symbol, variable and type
+     * @param symbol
+     * @param variable
+     * @param type 
+     */
     public ArrayDecl(Token symbol, Name variable, Type type) {
         super(symbol, variable, type);
     }
 
+    /**
+     * Sets the symbol for the array decleration 
+     * @param symbol 
+     */
     public ArrayDecl(Token symbol) {
         super(symbol);
     }
 
+    /**
+ * Unspecified constructor
+ */
     public ArrayDecl() {
     }
 
-    //determine size of array 
+    /**
+     * Constructor sets the array and its size 
+     * @param symbol
+     * @param variable
+     * @param type
+     * @param size 
+     */
     public ArrayDecl(Token symbol, Name variable, Type type, Expression size) {
         super(symbol, variable, type);
         this.size = size;
     }
 
-    //return size 
+    /**
+     * Returns the size of the expression 
+     * @return 
+     */
     public Expression getSize() {
         return size;
     }
 
-    //set size of expression
+    /**
+     * Set the size of the expression 
+     * @param size 
+     */
     public void setSize(Expression size) {
         this.size = size;
     }
 
-    //return list
+    /**
+     * Returns the initial list in the expression list 
+     * @return 
+     */
     public ExprList getInitList() {
         return initList;
     }
 
+    /**
+     * This method sets the expression initial list
+     * @param initList 
+     */
     public void setInitList(ExprList initList) {
         this.initList = initList;
     }

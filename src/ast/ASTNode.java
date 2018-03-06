@@ -10,26 +10,34 @@ import parser.Scope;
 import parser.SymbolTable;
 
 /**
- *
+ * A node contains a Token
  * @author Alan
  */
 public abstract class ASTNode {
-    
+    /**
+     * Sets the token to null
+     */
     public ASTNode(){
         this(null);
     }
-    
-    //set value for symbol 
+    /**
+     * Constructor sets stored Token to provided token.
+     * @param symbol the symbol to store.
+     */
     public ASTNode(Token symbol){
         this.symbol = symbol;
     }
-    
-    //returns value of symbol
+    /**
+     * Returns the stored Token
+     * @return the Token stored.
+     */
     public Token getSymbol(){
         return symbol;
     }
-    
-    //set symbol equal to s 
+    /**
+     * Sets the symbol to the provided symbol.
+     * @param s new symbol
+     */
     public void setSymbol(Token s){
         symbol = s;
     }
@@ -37,7 +45,11 @@ public abstract class ASTNode {
     public abstract void typeCheck(ArrayList<String> msgs);
     public abstract void generate(ArrayList<String> code, boolean dynamic); 
     
-    //indent string to correct format
+    /**
+     * Adds a number of spaces to indent a string.
+     * @param amount the number of spaces to indent.
+     * @return the indented string.
+     */
     protected String indent(int amount){
         StringBuilder sb = new StringBuilder();
         for(int i=0;i<amount;++i){
@@ -45,8 +57,11 @@ public abstract class ASTNode {
         }
         return sb.toString();
     }
-    
-    //return string
+/**
+ * Formats a string by indenting.
+ * @param indent the number of indents.
+ * @return formated line.
+ */
     public String format(int indent){
         return format(indent, false);
     }

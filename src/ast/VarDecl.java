@@ -4,28 +4,46 @@ import java.util.ArrayList;
 import lexer.Token;
 
 /**
- *
+ * A VarDecl is a Declaration of a variable.
  * @author Alan
  */
 public class VarDecl extends Declaration {
-
+/**
+ * Unspecified constructor
+ */
     public VarDecl() {
     }
-
+/**
+ * Sets the symbol for the declared variable
+ * @param symbol the symbol connected with this Declaration.
+ */
     public VarDecl(Token symbol) {
         super(symbol);
     }
-
+/**
+ * 
+ * @param symbol The symbol of the varDecl
+ * @param variable the name of the variable
+ * @param type the type of the variable.
+ */
     public VarDecl(Token symbol, Name variable, Type type) {
         super(symbol);
         this.variable = variable;
         this.type = type;
     }
 
+    /**
+     * return the init value of the expression 
+     * @return 
+     */
     public Expression getInit() {
         return init;
     }
 
+    /**
+     * set the init value of the expression 
+     * @param init 
+     */
     public void setInit(Expression init) {
         this.init = init;
     }

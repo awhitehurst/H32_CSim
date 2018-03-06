@@ -7,15 +7,20 @@ package ast;
 import lexer.Token;
 
 /**
- *
+ * An Expression is an abstract class containing a Token.
  * @author Alan
  */
 public abstract class Expression extends ASTNode {
-
+/**
+ * Creates an Expression with a Token.
+ * @param symbol 
+ */
     public Expression(Token symbol) {
         super(symbol);
     }
-
+/**
+ * Creates an empty Expression.
+ */
     public Expression() {
         
     }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ast;
 
 import csim.Generator;
@@ -10,51 +6,71 @@ import java.util.Iterator;
 import parser.Scope;
 
 /**
- *
+ * A Block contains an ArrayList of statements, an ArrayList of declarations, and a scope.
  * @author Alan
  */
 public class Block extends Statement {
-
-    //create array blocks
+/**
+ * Constructor creates an empty Block.
+ */
     public Block() {
         decls = new ArrayList<>();
         stats = new ArrayList<>();
         scope = null;
     }
-
-    //add decls to array
+/**
+ * Adds a Declaration.
+ * @param d 
+ */
     public void addDecl(Declaration d) {
         decls.add(d);
     }
-
-    //return decls in array list 
+/**
+ * Retrieves all declarations in this block
+ * @return the ArrayList containing the declarations.
+ */
     public ArrayList<Declaration> getDecls() {
         return decls;
     }
-
+/**
+ * Sets the ArrayList of Declarations to a new ArrayList of Declarations.
+ * @param decls the new ArrayList of Declarations.
+ */
     public void setDecls(ArrayList<Declaration> decls) {
         this.decls = decls;
     }
-
-    //add stats to arraylist 
+/**
+ * Adds a Statement
+ * @param s the statement to be added.
+ */
     public void addStat(Statement s) {
         stats.add(s);
     }
-
-    //return stats from arraylist 
+/**
+ * Returns an ArrayList containing all Statements.
+ * @return 
+ */
     public ArrayList<Statement> getStats() {
         return stats;
     }
-
-    //set stats value
+/**
+ * Sets the ArrayList containing Statements to a new provided ArrayList.
+ * @param stats The new ArrayList of Statements.
+ */
     public void setStats(ArrayList<Statement> stats) {
         this.stats = stats;
     }
-
+/**
+ * Returns the scope of the block
+ * @return 
+ */
     public Scope getScope() {
         return scope;
     }
-
+/**
+ * Sets the scope of the block to a new scope.
+ * @param scope The new Scope.
+ */
     public void setScope(Scope scope) {
         this.scope = scope;
     }
@@ -71,7 +87,13 @@ public class Block extends Statement {
         }
     }
 
-    //determine the size of the stack
+    /**
+     * Takes the array of delecrations and determins the total size of the stack
+     * @return 
+     */
+    
+     
+    
     private int calculateTotalStackSize() {
         int totalSize = 0;
         if (getDecls() != null) {
@@ -93,7 +115,7 @@ public class Block extends Statement {
         return totalSize;
     }
 
-    //assign address
+    
     private int assignRelativeAddresses(int offset) {
         if (getDecls() != null) {
             for (Declaration decl : getDecls()) {

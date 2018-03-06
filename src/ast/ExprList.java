@@ -11,41 +11,63 @@ import java.util.Iterator;
 import java.util.ListIterator;
 
 /**
- *
+ * ExprList is an ASTNode containing an ArrayList of Expressions.
  * @author Alan
  */
 public class ExprList extends ASTNode {
-    //create arrylist for expression
+    /**
+     * Creates an empty ExprList.
+     */
     public ExprList(){
         exprs = new ArrayList<>();
     }
-    
-    //size of array
+    /**
+     * Returns the size of the ExprList.
+     * @return 
+     */
     public int size(){
         return exprs.size();
     }
+    /**
+     * Adds a new expression.
+     * @param expr the new expression.
+     */
     
-    //add expression to list
+
     public void add(Expression expr){
         exprs.add(expr);
     }
-    
-    //retreive a expression from the list
+    /**
+     * Get the expression at a specified index.
+     * @param index the index to search at.
+     * @return The requested Expression.
+     */
+
     public Expression get(int index){
         return (Expression) exprs.get(index);
     }
+    /**
+     * Sets the Expression at a specified index to a new Expression
+     * @param index the index to change
+     * @param expr the new expression
+     */
     
-    //set expression at a specific index
     public void set(int index, Expression expr){
         exprs.set(index, expr);
     }
+    /**
+     * Creates an iterator for the ExprList.
+     * @return the iterator.
+     */
     
-    //iterate the array list 
     public Iterator<Expression> iterator(){
         return exprs.iterator();
     }
+    /**
+     * Returns a ListIterator for the ExprList.
+     * @return 
+     */
     
-    //return itorated expression list 
     public ListIterator<Expression> listIterator(){
         return exprs.listIterator();
     }

@@ -13,38 +13,67 @@ import lexer.Token;
  */
 public class Proccall extends Statement {
 
+    /**
+     * Set the symbol for the procall
+     * @param symbol 
+     */
     public Proccall(Token symbol) {
         super(symbol);
     }
 
+    /**
+     * creates an empty procall
+     */
     public Proccall() {
     }
 
+    /**
+     * 
+     * @param symbol is a token
+     * @param name is a name 
+     * @param args is the expression list 
+     */
     public Proccall(Token symbol, Name name, ExprList args) {
         super(symbol);
         this.name = name;
         this.args = args;
     }
 
-    
+    /**
+     * return the args expression list 
+     * @return 
+     */
     public ExprList getArgs() {
         return args;
     }
 
+    /**
+     * set the value of the expression list 
+     * @param args 
+     */
     public void setArgs(ExprList args) {
         this.args = args;
     }
-
+/**
+ * adds an args value to the expression list 
+ * @param arg 
+ */
     public void addArg(Expression arg) {
         args.add(arg);
     }
 
-    //return name 
+    /**
+     * returns the name 
+     * @return 
+     */ 
     public Name getName() {
         return name;
     }
 
-    //set name value 
+    /**
+     * sets the value of the name 
+     * @param name 
+     */
     public void setName(Name name) {
         this.name = name;
     }
