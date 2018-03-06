@@ -40,7 +40,6 @@ public class Param extends Expression {
  * Sets the variable to a new name.
  * @param variable the new name.
  */
-
     public void setVariable(Name variable) {
         this.variable = variable;
     }
@@ -49,10 +48,10 @@ public class Param extends Expression {
  * Gets the scope of the param 
  * @return 
  */
-
-    public Scope getScope() {
+  public Scope getScope() {
         return scope;
     }
+
 
     /**
      * Sets the scope of the param to a new scope.

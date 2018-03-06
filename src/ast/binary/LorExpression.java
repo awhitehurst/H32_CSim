@@ -6,7 +6,7 @@ import csim.Generator;
 import java.util.ArrayList;
 
 /**
- *
+ * Creates an Assembly Language representation of the Or operation "||"
  * @author alan.whitehurst
  */
 public class LorExpression extends Binary {

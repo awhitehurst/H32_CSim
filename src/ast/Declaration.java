@@ -8,11 +8,10 @@ import lexer.Token;
 import parser.Scope;
 
 /**
- *
+ * Declaration is a kind of ASTNode, containing a Token called symbol and a Scope.
  * @author Alan
  */
 public abstract class Declaration extends ASTNode {
-
     /**
      * creates a empty declaration 
      */
@@ -30,18 +29,18 @@ public abstract class Declaration extends ASTNode {
     
     public abstract int getAllocSize();
 
-    /**
-     * return the value of the scope 
-     * @return 
-     */
+/**
+ * Returns the scope connected with this Declaration.
+ * @return 
+ */
     public Scope getScope() {
         return scope;
     }
-
-    /**
-     * sets the value of the scope 
-     * @param scope 
-     */
+  
+/**
+ * Sets the scope to a new scope.
+ * @param scope the new scope.
+ */
     public void setScope(Scope scope) {
         this.scope = scope;
     }

@@ -11,7 +11,7 @@ import csim.Generator;
 import java.util.ArrayList;
 
 /**
- *
+ * Creates an Assembly Language representation of the Less than operation "<".
  * @author alan.whitehurst
  */
 public class LtExpression extends Binary {

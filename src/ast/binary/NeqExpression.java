@@ -11,7 +11,7 @@ import csim.Generator;
 import java.util.ArrayList;
 
 /**
- *
+ * Creates an Assembly Language representation of the Not Equals "!=" operator.
  * @author alan.whitehurst
  */
 public class NeqExpression extends Binary {

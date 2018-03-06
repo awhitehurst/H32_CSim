@@ -8,7 +8,7 @@ package ast.binary;
 import ast.Binary;
 
 /**
- *
+ * Creates a Binary based on the String input. 
  * @author alan.whitehurst
  */
 public class Factory {

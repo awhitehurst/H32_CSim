@@ -1,16 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ast;
-
 import java.util.ArrayList;
 import lexer.Token;
-import parser.Scope;
-import parser.SymbolTable;
 
 /**
- * A node contains a Token
+ * A class representing the most basic node for the Abstract Syntax Tree.
+ * Contains a single Token. Serves as a superclass for more specific types of ASTnodes.
  * @author Alan
  */
 public abstract class ASTNode {

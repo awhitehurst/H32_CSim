@@ -32,7 +32,6 @@ public class ExprList extends ASTNode {
      * Adds a new expression.
      * @param expr the new expression.
      */
-    
 
     public void add(Expression expr){
         exprs.add(expr);
@@ -42,7 +41,6 @@ public class ExprList extends ASTNode {
      * @param index the index to search at.
      * @return The requested Expression.
      */
-
     public Expression get(int index){
         return (Expression) exprs.get(index);
     }
@@ -51,7 +49,6 @@ public class ExprList extends ASTNode {
      * @param index the index to change
      * @param expr the new expression
      */
-    
     public void set(int index, Expression expr){
         exprs.set(index, expr);
     }
@@ -59,7 +56,6 @@ public class ExprList extends ASTNode {
      * Creates an iterator for the ExprList.
      * @return the iterator.
      */
-    
     public Iterator<Expression> iterator(){
         return exprs.iterator();
     }
@@ -67,7 +63,6 @@ public class ExprList extends ASTNode {
      * Returns a ListIterator for the ExprList.
      * @return 
      */
-    
     public ListIterator<Expression> listIterator(){
         return exprs.listIterator();
     }

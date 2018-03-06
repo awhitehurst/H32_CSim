@@ -10,7 +10,7 @@ import ast.Type;
 import java.util.ArrayList;
 
 /**
- *
+ * Creates an Assembly Language representation for the modulus "%" operator.
  * @author alan.whitehurst
  */
 public class RemExpression extends Binary {

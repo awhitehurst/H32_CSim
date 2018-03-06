@@ -87,13 +87,11 @@ public class Block extends Statement {
         }
     }
 
+
     /**
      * Takes the array of delecrations and determins the total size of the stack
      * @return 
      */
-    
-     
-    
     private int calculateTotalStackSize() {
         int totalSize = 0;
         if (getDecls() != null) {
@@ -115,7 +113,6 @@ public class Block extends Statement {
         return totalSize;
     }
 
-    
     private int assignRelativeAddresses(int offset) {
         if (getDecls() != null) {
             for (Declaration decl : getDecls()) {
