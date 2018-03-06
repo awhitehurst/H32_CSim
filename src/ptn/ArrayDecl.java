@@ -5,15 +5,19 @@
 package ptn;
 
 /**
- *
+ *creates an array decleration that extends a decleration 
  * @author Alan
  */
 public class ArrayDecl extends Decl {
-    
+   
     public ArrayDecl(){
         super(4);
     }
     
+    /**
+     * sets the type, name, and scope of the array delcaration 
+     * @param v 
+     */
     public ArrayDecl(VarDecl v){
         super(4);
         setType(v.getType());
@@ -21,17 +25,26 @@ public class ArrayDecl extends Decl {
         setScope(v.getScope());
     }
     
-    //get expression size 
+    /**
+     * return the expression size 
+     * @return 
+     */
     public Expression getSize(){
         return (Expression) children.get(2);
     }
     
-    //set expression size 
+    /**
+     * set the expression size 
+     * @param expr 
+     */
     public void setSize(Expression expr){
         children.set(2, expr);
     }
     
-    //check to see if expression has a size 
+    /**
+     * check to see if the expression is not equal to null
+     * @return 
+     */
     public boolean hasSize(){
         return children.get(2)!=null;
     }

@@ -10,16 +10,26 @@ import lexer.Token;
  */
 public class Operator extends ASTNode {
 
-    //create operator string 
+    /**
+     * Set the symbol for the operator
+     * @param symbol 
+     */
     public Operator(Token symbol) {
         super(symbol);
         opString = symbol.getSymbol();
     }
     
+    /**
+     * sets the value of the str string 
+     * @param str 
+     */
     public Operator(String str){
         opString = str;
     }
 
+    /**
+     * sets the value of the string to null
+     */
     public Operator() {
         opString = null;
     }

@@ -14,59 +14,97 @@ import lexer.Token;
  */
 public class Loop extends Statement {
 
+    /**
+     * creates an empty loop
+     */
     public Loop() {
     }
 
+    /**
+     * Set the symbol for the loop
+     * @param symbol 
+     */
     public Loop(Token symbol) {
         super(symbol);
     }
 
-    //return value for block 
+    /**
+     * return the block body value 
+     * @return 
+     */
     public Block getBody() {
         return body;
     }
 
-    //set value of body
+   
+    /**
+     * set the block body value 
+     * @param body 
+     */
     public void setBody(Block body) {
         this.body = body;
     }
 
-    //return value of test 
+    /**
+     * return the expression of the test 
+     * @return 
+     */
     public Expression getTest() {
         return test;
     }
 
-    //set value of test 
+    /**
+     * set the expression test value 
+     * @param test 
+     */
     public void setTest(Expression test) {
         this.test = test;
     }
 
-    //check to see if init in null
+    /**
+     * check to see if the init assignment value is null 
+     * @return 
+     */
     public boolean hasInit() {
         return init != null;
     }
 
-    //return value of init 
+    /**
+     * return the init assignment value 
+     * @return 
+     */
     public Assignment getInit() {
         return init;
     }
 
-    //set value of init 
+    /**
+     * set the value of the init 
+     * @param init 
+     */
     public void setInit(Assignment init) {
         this.init = init;
     }
 
-    //has it updated 
+    /**
+     * check to see if an update in the assignment has taken place 
+     * @return 
+     */
     public boolean hasUpdate() {
         return update != null;
     }
 
-    //return updated values 
+    /**
+     *return the updated assignment value
+     * @return 
+     */
     public Assignment getUpdate() {
         return update;
     }
 
-    //set values for update 
+    /**
+     * set the value of the assignment to be updated
+     * @param update 
+     */
     public void setUpdate(Assignment update) {
         this.update = update;
     }

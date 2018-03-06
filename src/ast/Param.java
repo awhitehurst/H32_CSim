@@ -43,14 +43,20 @@ public class Param extends Expression {
     public void setVariable(Name variable) {
         this.variable = variable;
     }
+
 /**
- * Gets the scope of the 
+ * Gets the scope of the param 
  * @return 
  */
-    public Scope getScope() {
+  public Scope getScope() {
         return scope;
     }
 
+
+    /**
+     * Sets the scope of the param to a new scope.
+     * @param scope 
+     */
     public void setScope(Scope scope) {
         this.scope = scope;
     }

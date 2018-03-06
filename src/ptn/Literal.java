@@ -5,11 +5,15 @@
 package ptn;
 
 /**
- *
+ *Creates cases depending on what symbol is retrieved 
  * @author Alan
  */
 public class Literal extends Expression {
     
+    /**
+     * return proper format depending on case 
+     * @return 
+     */
     public String toPolish(){
         switch(symbol.getSType()){
             case CI:

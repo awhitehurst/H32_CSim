@@ -8,7 +8,7 @@ package ptn;
 import parser.Scope;
 
 /**
- *
+ *Creates a block  for a declaration state 
  * @author Lab Admin
  */
 public class Block extends Statement {
@@ -17,27 +17,42 @@ public class Block extends Statement {
         super(1);
     }
     
-    //return body of delecration state 
+    /**
+     * return the body of the decleration state 
+     * @return 
+     */
     public DeclStats getBody(){
         return (DeclStats) children.get(0);
     }
     
-    //set body of decleration state 
+    /**
+     * set the body of the decleration state 
+     * @param s 
+     */
     public void setBody(DeclStats s){
         children.set(0, s);
     }
     
-    //check to see if body is empty 
+    /**
+     * check to see if the body is empty 
+     * @return 
+     */
     public boolean isEmpty(){
         return getBody().isEmpty();
     }
 
-    //return scope value 
+    /**
+     * return the value of the scope of the block
+     * @return 
+     */
     public Scope getScope() {
         return scope;
     }
 
-    //set scope value 
+    /**
+     * set the value of the scope in the block
+     * @param scope 
+     */
     public void setScope(Scope scope) {
         this.scope = scope;
     }

@@ -30,7 +30,6 @@ public abstract class Statement extends ASTNode {
         generate(code, inFunction, 0);
     }
     
-    //generate array list 
     public abstract void generate(ArrayList<String> code, boolean inFunction, int offset);
 
 }

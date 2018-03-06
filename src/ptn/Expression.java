@@ -5,7 +5,7 @@
 package ptn;
 
 /**
- *
+ *Creates a method to return the value of expressions 
  * @author Alan
  */
 public class Expression extends PTNode {
@@ -14,46 +14,71 @@ public class Expression extends PTNode {
         super(3);
     }
 
-    //return Lhs expression value 
+    /**
+     * return Lhs expression value 
+    */
     public Expression getLhs() {
         return (Expression) children.get(0);
     }
 
-    //set Lhs expression value 
+    /**
+     * set Lhs expression value
+     */
     public void setLhs(Expression e) {
         children.set(0, e);
     }
 
-    //return operator value
+    /**
+     * return operator value
+     */
     public Operator getOp() {
         return (Operator) children.get(1);
     }
 
-    //set operator value 
+    /**
+     * set operator value 
+     * @param op 
+     */
     public void setOp(Operator op) {
         children.set(1, op);
     }
 
-    //return Rhs expression value 
+    /**
+     * return Rhs expression value 
+     * @return 
+     */
     public Expression getRhs() {
         return (Expression) children.get(2);
     }
 
-    //set Rhs expression value 
+    /**
+     * set Rhs expression value 
+     * @param e 
+     */
     public void setRhs(Expression e) {
         children.set(2, e);
     }
 
-    //check to see an operator has a value 
+    /**
+     * check to see an operator has a value 
+     * @return 
+     */ 
     public boolean hasOp() {
         return children.get(1) != null;
     }
 
-    //checks to see if Rhs has a value 
+    /**
+     * checks to see if Rhs has a value 
+     * @return 
+     */
     public boolean hasRhs() {
         return children.get(2) != null;
     }
     
+    /**
+     * check to see if an operator and a rhs exist  
+     * @return 
+     */
     private boolean isTerm(){
         return !hasOp() && !hasRhs();
     }

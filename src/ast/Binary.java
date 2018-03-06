@@ -14,10 +14,21 @@ public abstract class Binary extends Expression {
         
     }
 
+    /**
+     * Set the symbol for the binary 
+     * @param symbol 
+     */
     public Binary(Token symbol) {
         super(symbol);
     }
 
+    /**
+     * Creates a binary with a symbol, operator, lhs, and a rhs 
+     * @param symbol
+     * @param op
+     * @param lhs
+     * @param rhs 
+     */
     public Binary(Token symbol, Operator op, Expression lhs, Expression rhs) {
         super(symbol);
         this.op = op;
@@ -25,32 +36,50 @@ public abstract class Binary extends Expression {
         this.rhs = rhs;
     }
 
-    //return lhs
+    /**
+     * Returns the lhs expression of the array
+     * @return 
+     */
     public Expression getLhs() {
         return lhs;
     }
 
-    //set lhs
+    /**
+     * Sets the expression lhs
+     * @param lhs 
+     */
     public void setLhs(Expression lhs) {
         this.lhs = lhs;
     }
 
-    //return operator
+    /**
+     * returns the operator 
+     * @return 
+     */
     public Operator getOp() {
         return op;
     }
 
-    //set operator
+    /**
+     * sets the operator
+     * @param op 
+     */
     public void setOp(Operator op) {
         this.op = op;
     }
 
-    //return rhs
+    /**
+     * returns the rhs expression of the array
+     * @return 
+     */
     public Expression getRhs() {
         return rhs;
     }
 
-    //set rhs
+    /**
+     * sets the rhs expression
+     * @param rhs 
+     */
     public void setRhs(Expression rhs) {
         this.rhs = rhs;
     }

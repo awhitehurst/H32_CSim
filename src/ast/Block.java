@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ast;
 
 import csim.Generator;
@@ -91,6 +87,11 @@ public class Block extends Statement {
         }
     }
 
+
+    /**
+     * Takes the array of delecrations and determins the total size of the stack
+     * @return 
+     */
     private int calculateTotalStackSize() {
         int totalSize = 0;
         if (getDecls() != null) {

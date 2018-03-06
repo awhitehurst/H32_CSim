@@ -13,30 +13,51 @@ import java.util.ArrayList;
  */
 public class Conditional extends Statement {
 
-    //get esential block
+ 
+    /**
+     * returns the essential block in the conditional 
+     * @return 
+     */
     public Block getElseBlock() {
         return elseBlock;
     }
 
-    //set essential block
+    /**
+     * sets the essential block 
+     * @param elseBlock 
+     */
     public void setElseBlock(Block elseBlock) {
         this.elseBlock = elseBlock;
     }
 
-    //get IfBlock value
+    /**
+     * returns the ifBlock  value 
+     * @return 
+     */
     public Block getIfBlock() {
         return ifBlock;
     }
 
-    //set IfBlock value
+    /**
+     * set the if block value 
+     * @param ifBlock 
+     */
     public void setIfBlock(Block ifBlock) {
         this.ifBlock = ifBlock;
     }
 
+    /**
+     * return the test expression
+     * @return 
+     */
     public Expression getTest() {
         return test;
     }
 
+    /**
+     * sets the value test expression 
+     * @param test 
+     */
     public void setTest(Expression test) {
         this.test = test;
     }
