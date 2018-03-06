@@ -8,47 +8,71 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- *
+ *creates a declaration for statements 
  * @author Alan
  */
 public class DeclStats extends PTNode {
     
+    /**
+     * set the array for the statements and declerations 
+     */
     public DeclStats(){
         decls = new ArrayList<Decl>();
         stats = new ArrayList<Statement>();
     }
 
-    //return decls array values 
+    /**
+     * return the array declerations 
+     * @return 
+     */
     public ArrayList<Decl> getDecls() {
         return decls;
     }
 
-    //set decls array value 
+    /**
+     * set the values of the declerations in the array 
+     * @param decls 
+     */
     public void setDecls(ArrayList<Decl> decls) {
         this.decls = decls;
     }
 
-    //return stats array
+    /**
+     * return the values in the statement array  
+     * @return 
+     */
     public ArrayList<Statement> getStats() {
         return stats;
     }
 
-    //set stats array value 
+    /**
+     * set the values of the statement array 
+     * @param stats 
+     */
     public void setStats(ArrayList<Statement> stats) {
         this.stats = stats;
     }
     
-    //add decl value to array 
+    /**
+     * add declerations to the array 
+     * @param decl 
+     */
     public void addDecl(Decl decl){
         decls.add(decl);
     }
     
-    //add stat value to array 
+    /**
+     * add statements to the array 
+     * @param stat 
+     */ 
     public void addStat(Statement stat){
         stats.add(stat);
     }
     
-    // check to see if array is empty 
+    /**
+     * check to see if array is empty 
+     * @return 
+     */
     public boolean isEmpty(){
         return decls.isEmpty() && stats.isEmpty();
     }

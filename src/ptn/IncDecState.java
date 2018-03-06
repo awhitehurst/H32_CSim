@@ -14,18 +14,34 @@ public class IncDecState extends Statement {
         super(2);
     }
     
+    /**
+     * return the value of the operator 
+     * @return 
+     */
     public Operator getOp(){
         return (Operator) children.get(0);
     }
 
+    /**
+     * set the operator value  
+     * @param op 
+     */
     public void setOp(Operator op) {
         children.set(0,op);
     }
     
+    /**
+     * return the variable reference 
+     * @return 
+     */
     public VarRef getVarRef(){
         return (VarRef) children.get(1);
     }
 
+    /**
+     * set the variable reference 
+     * @param varRef 
+     */
     public void setVarRef(VarRef varRef) {
         children.set(1,varRef);
     }

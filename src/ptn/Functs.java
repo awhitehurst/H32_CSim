@@ -15,6 +15,12 @@ import java.util.Iterator;
  */
 public class Functs extends PTNode {
 
+    /**
+     * Creates an array list for functions 
+     * but functions through the iterator
+     * returns the function
+     * @return 
+     */
     public ArrayList<ast.Function> toFunctions(){
         ArrayList<ast.Function> functions = new ArrayList<ast.Function>();
         Iterator<PTNode> it = getChildren().iterator();
