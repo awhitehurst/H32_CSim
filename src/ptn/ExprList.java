@@ -6,39 +6,22 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- *creates an array list for expressions that extends the PTNode 
+ *
  * @author Alan
  */
 public class ExprList extends PTNode {
     
-    /**
-     * creates an empty expression list 
-     */
     public ExprList(){
     }
     
-    /**
-     * add an expression to the list 
-     * @param expr 
-     */
     public void addExpr(Expression expr){
         children.add(expr);
     }
     
-    /**
-     * return an expression at a given point 
-     * @param index
-     * @return 
-     */
     public Expression getExpr(int index){
         return (Expression) children.get(index);
     }
     
-    /**
-     * set an expression value at a given point 
-     * @param index
-     * @param expr 
-     */
     public void setExpr(int index, Expression expr){
         children.set(index, expr);
     }

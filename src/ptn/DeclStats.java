@@ -8,71 +8,40 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- *creates a declaration for statements 
+ *
  * @author Alan
  */
 public class DeclStats extends PTNode {
     
-    /**
-     * set the array for the statements and declerations 
-     */
     public DeclStats(){
         decls = new ArrayList<Decl>();
         stats = new ArrayList<Statement>();
     }
 
-    /**
-     * return the array declerations 
-     * @return 
-     */
     public ArrayList<Decl> getDecls() {
         return decls;
     }
 
-    /**
-     * set the values of the declerations in the array 
-     * @param decls 
-     */
     public void setDecls(ArrayList<Decl> decls) {
         this.decls = decls;
     }
 
-    /**
-     * return the values in the statement array  
-     * @return 
-     */
     public ArrayList<Statement> getStats() {
         return stats;
     }
 
-    /**
-     * set the values of the statement array 
-     * @param stats 
-     */
     public void setStats(ArrayList<Statement> stats) {
         this.stats = stats;
     }
     
-    /**
-     * add declerations to the array 
-     * @param decl 
-     */
     public void addDecl(Decl decl){
         decls.add(decl);
     }
     
-    /**
-     * add statements to the array 
-     * @param stat 
-     */ 
     public void addStat(Statement stat){
         stats.add(stat);
     }
     
-    /**
-     * check to see if array is empty 
-     * @return 
-     */
     public boolean isEmpty(){
         return decls.isEmpty() && stats.isEmpty();
     }
@@ -96,7 +65,6 @@ public class DeclStats extends PTNode {
         throw new UnsupportedOperationException("toAST not supported by DeclStats");
     }
     
-    //itorate declaration array 
     public ArrayList<ast.Declaration> toDeclarations(){
         ArrayList<ast.Declaration> declarations = new ArrayList<ast.Declaration>();
         Iterator<Decl> it = decls.iterator();
@@ -107,7 +75,6 @@ public class DeclStats extends PTNode {
         return declarations;
     }
     
-    //itorate statments array 
     public ArrayList<ast.Statement> toStatements(){
         ArrayList<ast.Statement> statements = new ArrayList<ast.Statement>();
         Iterator<Statement> it = stats.iterator();

@@ -14,66 +14,34 @@ public class ForState extends Statement {
         super(4);
     }
     
-    /**
-     * return the assigned states init value 
-     * @return 
-     */
     public AssignState getInit(){
         return (AssignState) children.get(0);
     }
     
-    /**
-     * set the assigned state init value 
-     * @param init 
-     */
     public void setInit(AssignState init){
         children.set(0, init);
     }
     
-    /**
-     * return the test result for the expression 
-     * @return 
-     */
     public Expression getTest(){
         return (Expression) children.get(1);
     }
     
-    /**
-     * set the value of the test 
-     * @param test 
-     */ 
     public void setTest(Expression test){
         children.set(1,test);
     }
     
-    /**
-     * return the assigned state incr value 
-     * @return 
-     */
     public AssignState getIncr(){
         return (AssignState) children.get(2);
     }
     
-    /**
-     * set the assigned state incr value 
-     * @param incr 
-     */
     public void setIncr(AssignState incr){
         children.set(2,incr);
     }
     
-    /**
-     * return the block value 
-     * @return 
-     */
     public Block getBody(){
         return (Block) children.get(3);
     }
 
-    /**
-     * set the block value 
-     * @param body 
-     */
     public void setBody(Block body) {
         children.set(3,body);
     }
