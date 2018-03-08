@@ -1,0 +1,31 @@
+int increment(int i){
+i = i+1;
+return i;
+}
+int develop(int i, char c, int v){
+
+
+}
+int boing(int u){
+return 'CC';
+}
+
+main(){
+
+int u = 9;
+int v = 6;
+u = v;
+char y = 'c';
+
+increment(y);
+while(v < u){
+
+int t = 9;
+}
+increment(v);
+develop(v, y, u);
+develop(v);
+increment(y, v, v, v, v, v, v, v);
+
+}
+

@@ -5,19 +5,33 @@ import java.util.ArrayList;
 import lexer.Token;
 
 /**
- *
+ * A binary expression is an abstract class representing any kind of expression
+ * that has an operator and two subjects of that operator. 
  * @author Alan
  */
 public abstract class Binary extends Expression {
-
+/**
+ * Creates an empty Binary.
+ */
     public Binary() {
         
     }
-
+/**
+ * Creates a Binary associated with a given Token
+ * @param symbol the Token of the Binary
+ */
     public Binary(Token symbol) {
         super(symbol);
     }
-
+/**
+ * Fully specified constructor contains a Token, an Operator, an Expression on
+ * the lefthand side of the operator, and an Expression on the righthand side
+ * of the Operator
+ * @param symbol the Token of the Binary
+ * @param op the Operator of the Binary
+ * @param lhs the Expression on the lefthand side of the Operator
+ * @param rhs the Expression on the righthand side of the Operator.
+ */
     public Binary(Token symbol, Operator op, Expression lhs, Expression rhs) {
         super(symbol);
         this.op = op;
@@ -25,32 +39,49 @@ public abstract class Binary extends Expression {
         this.rhs = rhs;
     }
 
-    //return lhs
+    /**
+     * Retrieves the Expression on the lefthand side of the Operator
+     * @return the Expression on the lefthand side of the Operator
+     */
     public Expression getLhs() {
         return lhs;
     }
 
-    //set lhs
+   /**
+    * Sets the Expression on the lefthand side of the Operator to a new Expression.
+    * @param lhs the new Expression.
+    */
     public void setLhs(Expression lhs) {
         this.lhs = lhs;
     }
 
-    //return operator
+   /**
+    * Retrieves the Operator of the Binary.
+    * @return the Operator.
+    */
     public Operator getOp() {
         return op;
     }
 
-    //set operator
+    /**
+     * Sets the Operator to a new Operator.
+     * @param op the new Operator.
+     */
     public void setOp(Operator op) {
         this.op = op;
     }
 
-    //return rhs
+    /**
+     * Retrieves the Expression on the righthand side of the Operator
+     * @return the Expression on the righthand side of the Operator
+     */
     public Expression getRhs() {
         return rhs;
     }
-
-    //set rhs
+/**
+ * Retrieves the Expression on the righthand side of the Operator
+ * @param rhs the Expression on the righthand side of the Operator
+ */
     public void setRhs(Expression rhs) {
         this.rhs = rhs;
     }

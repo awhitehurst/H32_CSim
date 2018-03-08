@@ -3,11 +3,13 @@ package ptn;
 import parser.Scope;
 
 /**
- *
+ * Represents a Function as a PTNode
  * @author Lab Admin
  */
 public class Funct extends PTNode {
-
+/**
+ * Creates an empty Funct
+ */
     public Funct() {
         super(4);
     }

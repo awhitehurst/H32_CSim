@@ -7,11 +7,14 @@ package ptn;
 import lexer.Token;
 
 /**
- *
+ * Creates a PTNode with a Token as a Name.
  * @author Alan
  */
 public class Name extends PTNode {
-
+/**
+ * Creates a Name with a Token
+ * @param s the Token to be used.
+ */
     public Name(Token s) {
        super(s);
     }

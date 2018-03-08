@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ast;
 
 import java.util.ArrayList;
@@ -12,21 +8,33 @@ import lexer.Token;
  * @author Alan
  */
 public class Literal extends Expression {
-
+/**
+ * Creates a Literal associated with a Token
+ * @param symbol the Token associated with the Literal
+ */
     public Literal(Token symbol) {
         super(symbol);
     }
-
+/**
+ * Creates an empty Literal.
+ */
     public Literal() {
     }
 
-    //create toke and type
+    /**
+     * Creates a Literal with a Token and a Type
+     * @param symbol the Token associated with the literal
+     * @param type the Type of the Literal
+     */
     public Literal(Token symbol, Type type) {
         super(symbol);
         this.type = type;
     }
 
-    //case types 
+    /**
+     * Translates a primitive data type to an Object of that type. 
+     * @return the finished Object.
+     */
     public Object toObject() {
         switch (type.getTypeCode()) {
             case Type.INT:
@@ -45,12 +53,18 @@ public class Literal extends Expression {
         return Integer.parseInt(symbol.getSymbol());
     }
 
-    //make char 
+   /**
+    * Passes back the symbol of the Token.
+    * @return the the symbol of the associated Token.
+    */
     public String toChar() {
         return symbol.getSymbol();
     }
 
-    //make bool
+    /**
+     * Translates the content of the Token into Boolean form.
+     * @return the Boolean representation of the symbol.
+     */
     public boolean toBool() {
         return Boolean.parseBoolean(symbol.getSymbol());
     }
@@ -90,7 +104,7 @@ public class Literal extends Expression {
 
     @Override
     public void typeCheck(ArrayList<String> msgs) {
-        return;
+       // return;
     }
 
     @Override
