@@ -13,31 +13,60 @@ import lexer.Token;
  */
 public class Unary extends Expression {
 
+    /**
+     * Set the symbol for the Unary 
+     * @param symbol 
+     */
     public Unary(Token symbol) {
         super(symbol);
     }
 
+    /**
+     * creates an empty unary 
+     */
     public Unary() {
     }
 
+    /**
+     * 
+     * @param symbol is a token
+     * @param op is a operator 
+     * @param term is an expression 
+     */
     public Unary(Token symbol, Operator op, Expression term) {
         super(symbol);
         this.op = op;
         this.term = term;
     }
 
+    /**
+     * return the operator value 
+     * @return 
+     */
     public Operator getOp() {
         return op;
     }
 
+    /**
+     * set the value of the operator 
+     * @param op 
+     */
     public void setOp(Operator op) {
         this.op = op;
     }
 
+    /**
+     * return the expression value 
+     * @return 
+     */
     public Expression getTerm() {
         return term;
     }
 
+    /**
+     * set the value of the expression 
+     * @param term 
+     */
     public void setTerm(Expression term) {
         this.term = term;
     }

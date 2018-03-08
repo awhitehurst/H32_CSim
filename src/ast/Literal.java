@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import lexer.Token;
 
 /**
- *
+ *This class takes an expression and returns it to the correct type
  * @author Alan
  */
 public class Literal extends Expression {
@@ -15,9 +15,10 @@ public class Literal extends Expression {
     public Literal(Token symbol) {
         super(symbol);
     }
-/**
- * Creates an empty Literal.
- */
+
+    /**
+     * creates an empty literal
+     */
     public Literal() {
     }
 
@@ -48,7 +49,10 @@ public class Literal extends Expression {
         }
     }
 
-    //make a int
+    /**
+     * return parsed int value 
+     * @return 
+     */
     public int toInt() {
         return Integer.parseInt(symbol.getSymbol());
     }

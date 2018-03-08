@@ -5,7 +5,7 @@
 package ptn;
 
 /**
- *
+ *Creates an assign state that extends a statement 
  * @author Alan
  */
 public class AssignState extends Statement {
@@ -14,21 +14,34 @@ public class AssignState extends Statement {
         super(2);
     }
     
-    
+    /**
+     * get the indent value of the variable reference 
+     * @return 
+     */
     public VarRef getIdent(){
         return (VarRef) children.get(0);
     }
 
+    /**
+     * set the indent value of the variable reference 
+     * @param ident 
+     */
     public void setIdent(VarRef ident) {
         children.set(0,ident);
     }
     
-    //get expression
+    /**
+     * return the expression in the assign state 
+     * @return 
+     */
     public Expression getExpression(){
         return (Expression) children.get(1);
     }
 
-    //set expression 
+    /**
+     * set the value of the expression in the assign state
+     * @param expr 
+     */
     public void setExpression(Expression expr) {
         children.set(1, expr);
     }

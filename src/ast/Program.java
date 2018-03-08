@@ -14,45 +14,76 @@ import lexer.Token;
  */
 public class Program extends ASTNode {
 
+    /**
+     * Set the symbol for the program
+     * @param symbol 
+     */
     public Program(Token symbol) {
         super(symbol);
     }
 
+    /**
+     * creates an empty program
+     */
     public Program() {
     }
 
+    /**
+     * 
+     * @param symbol is a token
+     * @param functs is an array list 
+     * @param body is a block
+     */
     public Program(Token symbol, ArrayList<Function> functs, Block body) {
         super(symbol);
         this.functs = functs;
         this.body = body;
     }
 
-    //add to array list 
+    /**
+     * add a fuction value to the array list 
+     * @param f 
+     */
     public void addFunct(Function f) {
         functs.add(f);
     }
 
-    //set values in array list 
+    /**
+     * set the value of the function in the array list 
+     * @param functs 
+     */
     public void setFuncts(ArrayList<Function> functs) {
         this.functs = functs;
     }
 
-    //add declaration token 
+    /**
+     * add a declaration to the body 
+     * @param d 
+     */
     public void addDecl(Declaration d) {
         body.addDecl(d);
     }
 
-    
+    /**
+     * add a statement to the body 
+     * @param s 
+     */
     public void addStat(Statement s) {
         body.addStat(s);
     }
 
-    //
+    /**
+     * set the value of the body block 
+     * @param body 
+     */
     public void setBody(Block body) {
         this.body = body;
     }
 
-    //return body values 
+    /**
+     * return the block body value 
+     * @return 
+     */
     public Block getBody() {
         return body;
     }

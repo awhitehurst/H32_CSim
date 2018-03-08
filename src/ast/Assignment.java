@@ -8,41 +8,65 @@ import java.util.ArrayList;
 import lexer.Token;
 
 /**
- *
+ *This class creates an assignment for a c code that extends a statement 
  * @author Alan
  */
 public class Assignment extends Statement {
-
+    
+/**
+ * Unspecified constructor
+ */
     public Assignment() {
     }
 
-    //create assigment 
+    /**
+     * Sets the symbol for the array decleration 
+     * @param symbol 
+     */
     public Assignment(Token symbol) {
         super(symbol);
     }
 
-    //set assignment boundries 
+    
+    /**
+     * 
+     * @param v is the variable reference 
+     * @param source is the expression 
+     */
     public Assignment(VarRef v, Expression source) {
         super();
         this.varRef = v;
         this.expr = source;
     }
 
-    //return expression 
+    /**
+     * returns the value of the expression 
+     * @return 
+     */
     public Expression getExpr() {
         return expr;
     }
 
-    //set expression
+    /**
+     * Sets the value of the expression 
+     * @param expr 
+     */
     public void setExpr(Expression expr) {
         this.expr = expr;
     }
 
-    //return variable referenace 
+    /**
+     * Returns the value of the variable reference 
+     * @return 
+     */
     public VarRef getVarRef() {
         return varRef;
     }
 
+    /**
+     * Sets the variable reference to the variable v
+     * @param v 
+     */
     public void setVarRef(VarRef v) {
         this.varRef = v;
     }

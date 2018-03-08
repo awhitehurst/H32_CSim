@@ -32,10 +32,18 @@ public class VarDecl extends Declaration {
         this.type = type;
     }
 
+    /**
+     * return the init value of the expression 
+     * @return 
+     */
     public Expression getInit() {
         return init;
     }
 
+    /**
+     * set the init value of the expression 
+     * @param init 
+     */
     public void setInit(Expression init) {
         this.init = init;
     }
