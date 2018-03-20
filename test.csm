@@ -1,0 +1,65 @@
+int increment(int i){
+i = i+1;
+return i;
+}
+int develop(int i, char c, int v){
+
+
+}
+int boing(int u){
+return 'CC';
+}
+
+public boolean isEqual() {
+     if (b == a) {
+         return true;
+     } else {
+         return false;
+     }
+}
+
+main(){
+int a = 0;
+int b = 4;
+int u = 9;
+int v = 6;
+int d = 10
+int f = 0;
+u = v;
+char y = 'c';
+
+isEqual();
+increment(y);
+while(v < u){
+
+int t = 9;
+}
+
+if(u = 9 && a!=1){
+a = u*2;
+}else{
+a = u/2;
+}
+
+if(a=1 || t = 9){
+System.out.println("Good Job");
+}
+
+ for(int z = 3; z <= 4 ; z++){
+ f = d%z;
+ return f;
+}
+
+char ch1 = 'a';
+char ch2 = 65; 
+System.out.println("Value of char variable ch1 is :" + ch1);	
+System.out.println("Value of char variable ch2 is :" + ch2);
+
+
+increment(v);
+develop(v, y, u);
+develop(v);
+increment(y, v, v, v, v, v, v, v);
+
+}
+
