@@ -4,6 +4,8 @@
  */
 package ptn;
 
+import java.util.ArrayList;
+
 /**
  *Creates a method to return the value of expressions 
  * @author Alan
@@ -86,9 +88,32 @@ public class Expression extends PTNode {
     private boolean isUnary(){
         return hasOp() && !hasRhs();
     }
+    /**
+     * Mines through levels of expressions to retrieve the symbol of the expression.
+     * @return the symbol of the expression as a string.
+     */
+    public String getContent(){
+         ArrayList child = children;
+       PTNode node;
+       String content = "";
+        while(child != null){
+            node = (PTNode)child.get(0);
+            if(node.symbol != null){
+                content = node.symbol.getSymbol();
+            }
+            child = node.children;
+            
+       
+        }
+        return content;
+    }
+    
     
     public String toPolish(){
-        return "_e";
+        
+      
+        return "-e";
+       // return "_" + getType().toPolish();
     }
 
     @Override

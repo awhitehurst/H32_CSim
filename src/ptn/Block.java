@@ -26,7 +26,7 @@ public class Block extends Statement {
     }
     
     /**
-     * set the body of the decleration state 
+     * set the body of the Block
      * @param s 
      */
     public void setBody(DeclStats s){

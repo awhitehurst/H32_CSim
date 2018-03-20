@@ -17,7 +17,6 @@ public class Proccall extends Statement {
     public Name getName() {
         return (Name) children.get(0);
     }
-
     public void setIdent(Name name) {
         children.set(0, name);
     }

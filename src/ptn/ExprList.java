@@ -52,7 +52,21 @@ public class ExprList extends PTNode {
         }
         return sb.toString();
     }
-    
+     /**
+      * Gets content of the ExprList.
+      * @return ArrayList containing all Expressions.
+      */
+    public ArrayList getContent(){
+    Iterator<PTNode> expressions = children.iterator();
+    String s;
+    ArrayList<String> params = new ArrayList();
+    while(expressions.hasNext()){
+    Expression ex = (Expression) expressions.next();
+    s =(ex.getContent());
+    params.add(s);
+    }
+    return params;
+    }
     @Override
     public String format(int indent){
         StringBuilder sb = new StringBuilder();

@@ -475,7 +475,23 @@ public class Parser {
         s = lex.peek();
         if (!s.getSymbol().equals(")")) {
             n.setArgs(parseExprList());
-        }
+                 
+            }
+        //Create name-mangle from gathered info, and check whether such a function exists.
+            String mangle = "$";
+       if(n.getArgs() != null){
+           
+            ArrayList<String> params = stab.convertNames(n.getArgs());
+            
+            for(String l:params){  
+            mangle += "_" +l.substring(0, 1);
+            }
+       }
+            String name = n.getName().toString();
+            if(!stab.contains(name + mangle)){
+            throwParseException("No function found with provided arguments. Function found: " + name + mangle, s);
+            }
+       
         s = lex.next();
         if (!s.getSymbol().equals(")")) {
             throwParseException("expecting ')'", s);

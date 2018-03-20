@@ -7,6 +7,7 @@ package parser;
 import java.util.ArrayList;
 import java.util.Stack;
 import lexer.Token;
+import ptn.ExprList;
 import ptn.Name;
 import ptn.Type;
 
@@ -44,6 +45,25 @@ public class SymbolTable {
     
     public boolean containsFunction(String name){
         return functionNames.contains(name);
+    }
+    /**
+     * Takes ExprList, locates the variable names, and passes back an ArrayList with the types of variables.
+     * @param params ExprList containing the arguments to be checked.
+     * @return ArrayList with types of all provided arguments.
+     */
+    public ArrayList convertNames(ExprList params){
+        ArrayList<String> paramList = params.getContent();
+        ArrayList<String> types = new ArrayList();
+    for(int i = 0; i < paramList.size(); i++){
+    if(contains(paramList.get(i), true)){
+   
+                
+           Type t = getType(paramList.get(i));
+            types.add(t.toString());
+        
+    }
+    }
+    return types;
     }
     
     public boolean contains(String token){
