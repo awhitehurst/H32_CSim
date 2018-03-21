@@ -481,22 +481,18 @@ public class Parser {
             String mangle = "$";
        if(n.getArgs() != null){
            
-            ArrayList<String> params = stab.convertNames(n.getArgs());
-            
-            for(String l:params){  
-            mangle += "_" +l.substring(0, 1);
-            }
+            mangle = stab.convertNames(n.getArgs());
        }
             String name = n.getName().toString();
             if(!stab.contains(name + mangle)){
             throwParseException("No function found with provided arguments. Function found: " + name + mangle, s);
             }
-       
         s = lex.next();
         if (!s.getSymbol().equals(")")) {
             throwParseException("expecting ')'", s);
         }
         return n;
+    
     }
 
     private AssignState parseAssignment() throws ParseException {

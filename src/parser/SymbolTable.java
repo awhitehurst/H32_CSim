@@ -6,6 +6,7 @@ package parser;
 
 import java.util.ArrayList;
 import java.util.Stack;
+import lexer.SType;
 import lexer.Token;
 import ptn.ExprList;
 import ptn.Name;
@@ -47,22 +48,27 @@ public class SymbolTable {
         return functionNames.contains(name);
     }
     /**
-     * Takes ExprList, locates the variable names, and passes back an ArrayList with the types of variables.
+     * Takes ExprList, locates the variable names, and passes back a Polish string.
      * @param params ExprList containing the arguments to be checked.
-     * @return ArrayList with types of all provided arguments.
+     * @return String in Polish representing the parameters.
      */
-    public ArrayList convertNames(ExprList params){
-        ArrayList<String> paramList = params.getContent();
-        ArrayList<String> types = new ArrayList();
+    public String convertNames(ExprList params){
+        ArrayList<Token> paramList = params.getContent();
+        String types = "$";
+        Type t;
     for(int i = 0; i < paramList.size(); i++){
-    if(contains(paramList.get(i), true)){
-   
-                
-           Type t = getType(paramList.get(i));
-            types.add(t.toString());
-        
-    }
-    }
+        String s = paramList.get(i).getSymbol();
+           if(contains(s)){
+           t = getType(s);
+           types += "_" + t.toPolish(); 
+    }else{
+           String v = SType.getSTypeName(paramList.get(i).getSType());
+           types += "_" + v.toLowerCase().substring(0,1);
+           
+           }
+           
+           }
+    
     return types;
     }
     

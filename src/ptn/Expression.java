@@ -5,6 +5,7 @@
 package ptn;
 
 import java.util.ArrayList;
+import lexer.Token;
 
 /**
  *Creates a method to return the value of expressions 
@@ -90,22 +91,25 @@ public class Expression extends PTNode {
     }
     /**
      * Mines through levels of expressions to retrieve the symbol of the expression.
-     * @return the symbol of the expression as a string.
+     * @return the symbol of the expression as a Token
      */
-    public String getContent(){
+    public Token getContent(){
          ArrayList child = children;
        PTNode node;
-       String content = "";
+       Token content = null;
         while(child != null){
             node = (PTNode)child.get(0);
-            if(node.symbol != null){
-                content = node.symbol.getSymbol();
+            if(node != null){
+                if(node.symbol != null){
+              return node.symbol;
             }
             child = node.children;
-            
+            }else{
+            break;
+            }
        
         }
-        return content;
+        return null;
     }
     
     
