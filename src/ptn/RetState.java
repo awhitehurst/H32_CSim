@@ -4,11 +4,15 @@
  */
 package ptn;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Alan
  */
 public class RetState extends Statement {
+    
+    
     
     public RetState(){
         super(1);
@@ -21,6 +25,33 @@ public class RetState extends Statement {
     public void setExpr(Expression expr){
         children.set(0,expr);
     }
+    /**
+     * Checks if the RetState returns a Funcall. Returns it if found.
+     * @return the stored Funcall, or null if none is stored.
+     */
+    public Funcall hasFuncall(){
+          ArrayList child = children;
+            PTNode node;
+       
+        while(child != null){
+            node = (PTNode)child.get(0);
+            if(node instanceof Funcall){
+                return (Funcall)node;
+              
+            }
+            if(node != null){
+            child = node.children;
+            }else{
+            break;
+            }
+            
+            }
+       
+        
+        return null;
+    }
+
+    
     
     @Override
     public String format(int indent){

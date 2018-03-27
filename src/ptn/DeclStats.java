@@ -117,6 +117,21 @@ public class DeclStats extends PTNode {
         }
         return statements;
     }
+    /**
+     * Locates any return statement in the DeclStates.
+     * @return the RetState if found, or null.
+     */
+    public RetState getReturn(){
+    if(isEmpty()){
+    return null;
+    }
+    for(Statement s: stats){
+    if(s instanceof RetState){
+    return (RetState)s;
+    }
+    }
+    return null;
+    }
             
     private ArrayList<Decl> decls;
     private ArrayList<Statement> stats;

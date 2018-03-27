@@ -12,8 +12,26 @@ import parser.Scope;
  */
 public class Funcall extends Expression {
 
+    private String mangle;
+    
     public Funcall() {
         super();
+    }
+    /**
+     * Retrieves the stored mangle of the called function.
+     * @return the mangle of the called function.
+     */
+    public String getMangle(){
+    return mangle;
+    
+    }
+    /**
+     * Stores the name mangle of the called function. Sets it to the given value.
+     * @param mangle the name mangle of stored function.
+     */
+    public void setMangle(String mangle){
+    this.mangle = mangle;
+    
     }
 
     /**

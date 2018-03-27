@@ -143,6 +143,19 @@ public class Parser {
             n.getParamList().pushParams(stab);
         }
         n.setBody(parseBlock());
+        RetState ret = n.getReturn();
+        String type = n.getType().getSymbol().getSymbol();
+        if(ret == null){
+       if(!type.equals("void")){
+       throwParseException("Expecting return statement", s);
+       }
+        }else{
+            if(!stab.checkReturn(n, ret)){
+           throwParseException("Wrong Return type. Expecting " + type, s);
+            }
+        
+        
+        }
         stab.popScope();
         return n;
     }
@@ -326,9 +339,9 @@ public class Parser {
             Name ident = parseName();
             s = lex.peek();
             if (s.getSymbol().equals("(")) {
-                if (!stab.containsFunction(ident.toString())) {
+            /*    if (!stab.containsFunction(ident.toString())) {
                     throwParseException("unrecognized function", ident.getSymbol());
-                }
+                }*/
                 return parseProccallState(ident);
             } else {
                 //VarRef v = new VarRef();
@@ -340,6 +353,7 @@ public class Parser {
 //                    v.setScope(stab.getContainingScope(v.getName().toString()));
 //                }
                 return parseAssignState(v);
+
             }
         } else {
             throwParseException("not a valid statement", s);
@@ -427,7 +441,14 @@ public class Parser {
         RetState n = new RetState();
         s = lex.peek();
         if (!s.getSymbol().equals(";")) {
+            if(s.getSType()==SType.ID)
+            {
+             n.setExpr(parsePrimary());
+
+            
+            }else{
             n.setExpr(parseExpression());
+            }
         }
         s = lex.next();
         if (!s.getSymbol().equals(";")) {
@@ -477,16 +498,11 @@ public class Parser {
             n.setArgs(parseExprList());
                  
             }
-        //Create name-mangle from gathered info, and check whether such a function exists.
-            String mangle = "$";
-       if(n.getArgs() != null){
-           
-            mangle = stab.convertNames(n.getArgs());
-       }
-            String name = n.getName().toString();
-            if(!stab.contains(name + mangle)){
-            throwParseException("No function found with provided arguments. Function found: " + name + mangle, s);
+            ArrayList results = stab.contains(ident, n.getArgs());
+        if((Boolean)results.get(0) == false){
+            throwParseException("No function found with provided arguments. Function found: " + results.get(1), s);
             }
+ 
         s = lex.next();
         if (!s.getSymbol().equals(")")) {
             throwParseException("expecting ')'", s);
@@ -664,9 +680,11 @@ public class Parser {
         if (!s.getSymbol().equals(")")) {
             throwParseException("expecting ')'", s);
         }
-        if (!stab.containsFunction(n.getName().toString())) {
-            throwParseException("undefined function", n.getName().getSymbol());
+        ArrayList results = stab.contains(ident, n.getArgs());
+        if (!(Boolean)results.get(0)) {
+            throwParseException("undefined function. Function found: " + results.get(1), n.getName().getSymbol());
         } else {
+            n.setMangle((String)results.get(1));
             n.setScope(stab.getGlobalScope());
         }
         return n;
@@ -751,6 +769,7 @@ public class Parser {
     }
 
     private void synchToToken(String token1, String token2) {
+        if(!token1.equals(token2)){
         Token s = lex.peek();
         if (s != null && (s.getSymbol().equals(token1) || s.getSymbol().equals(token2))) {
             s = lex.next();
@@ -762,7 +781,7 @@ public class Parser {
                 s = lex.next();
             }
         }
-    }
+    }}
 
     private void throwParseException(String cause, Token token) throws ParseException {
         throw new ParseException(
