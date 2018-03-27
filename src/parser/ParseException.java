@@ -5,7 +5,7 @@
 package parser;
 
 /**
- *
+ *This program takes a C++ code and throws exceptions if errors appear 
  * @author Alan
  */
 public class ParseException extends Exception {
