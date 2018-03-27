@@ -89,7 +89,11 @@ public class Funct extends PTNode {
     public void setBody(Block b) {
         children.set(3, b);
     }
+public RetState getReturn(){
+    
+    return getBody().getBody().getReturn();
 
+}
     /**
      * return header if body is empty 
      * @return 

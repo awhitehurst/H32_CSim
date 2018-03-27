@@ -4,6 +4,7 @@ package ptn;
 import ast.ASTNode;
 import java.util.ArrayList;
 import java.util.Iterator;
+import lexer.Token;
 
 /**
  *creates an array list for expressions that extends the PTNode 
@@ -54,16 +55,16 @@ public class ExprList extends PTNode {
     }
      /**
       * Gets content of the ExprList.
-      * @return ArrayList containing all Expressions.
+      * @return ArrayList containing the content of all Expressions.
       */
     public ArrayList getContent(){
     Iterator<PTNode> expressions = children.iterator();
-    String s;
-    ArrayList<String> params = new ArrayList();
+    Token t;
+    ArrayList<Token> params = new ArrayList();
     while(expressions.hasNext()){
     Expression ex = (Expression) expressions.next();
-    s =(ex.getContent());
-    params.add(s);
+    t = ex.getContent();
+    params.add(t);
     }
     return params;
     }

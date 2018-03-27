@@ -1,38 +1,42 @@
+
 int increment(int i){
-i = i+1;
 return i;
+}
+int boing(int u){
+char y = increment(u);
+return increment(8);
 }
 int develop(int i, char c, int v){ 
 
 i = i + c; //Adding type-incompatible.
-//No return
+return i;
 }
-int boing(int u){
-return 'CC';
-}
+
 void returnfalse(){
-return 3;               //allows return with void;
+return;             //allows return with void;
 }
 
 main(){
 int u = 9;
-int v = 6;
+int v = 'c';
 u = v;
-char y = 'c';
+char x;
+u = x;
+
 int* pointer = &v;
 
-increment(y); //requires int, y is char.
+increment(9);
 while(v < u){
 
 int t = 9;
 u = u +1;
 }
 returnfalse();
-increment(); //Calling function which requires parameters without any.
+//increment(); //Calling function which requires parameters without any.
 increment(v);
-develop(v, y, u); //Correct call;
-develop(v);
-increment(y, v, v, v, v, v, v, v); //Invalid function call.
+develop(v, 'c', u); //Correct call;
+//develop(v);
+//increment(v, v, v, v, v, 9, v); //Invalid function call.
 
 }
 

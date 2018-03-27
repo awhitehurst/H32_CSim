@@ -53,6 +53,9 @@ public class Token {
     public String toString() {
         return String.format("'%s' <%s> at line %d, column %d", symbol, stype, line, col);
     }
+    public String getTypeName(){
+    return SType.getSTypeName(stype);
+    }
 
     private String symbol;
     private SType stype;
