@@ -4,6 +4,9 @@
  */
 package ptn;
 
+import java.util.ArrayList;
+import lexer.Token;
+
 /**
  *
  * @author Alan
@@ -53,9 +56,35 @@ public class Expression extends PTNode {
     private boolean isUnary(){
         return hasOp() && !hasRhs();
     }
+    /**
+     * Mines through levels of expressions to retrieve the symbol of the expression.
+     * @return the symbol of the expression as a Token
+     */
+    public Token getContent(){
+         ArrayList child = children;
+       PTNode node;
+       Token content = null;
+        while(child != null){
+            node = (PTNode)child.get(0);
+            if(node != null){
+                if(node.symbol != null){
+              return node.symbol;
+            }
+            child = node.children;
+            }else{
+            break;
+            }
+       
+        }
+        return null;
+    }
+    
     
     public String toPolish(){
-        return "_e";
+        
+      
+        return "-e";
+       // return "_" + getType().toPolish();
     }
 
     @Override

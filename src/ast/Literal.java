@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ast;
 
 import java.util.ArrayList;
@@ -12,12 +8,10 @@ import lexer.Token;
  * @author Alan
  */
 public class Literal extends Expression {
-    
-
-    /**
-     * Set the symbol for the binar
-     * @param symbol 
-     */
+/**
+ * Creates a Literal associated with a Token
+ * @param symbol the Token associated with the Literal
+ */
     public Literal(Token symbol) {
         super(symbol);
     }
@@ -28,19 +22,19 @@ public class Literal extends Expression {
     public Literal() {
     }
 
-   /**
-    * 
-    * @param symbol this is a token 
-    * @param type this is a type 
-    */
+    /**
+     * Creates a Literal with a Token and a Type
+     * @param symbol the Token associated with the literal
+     * @param type the Type of the Literal
+     */
     public Literal(Token symbol, Type type) {
         super(symbol);
         this.type = type;
     }
 
     /**
-     * creates cases depending on the type of the expression 
-     * @return 
+     * Translates a primitive data type to an Object of that type. 
+     * @return the finished Object.
      */
     public Object toObject() {
         switch (type.getTypeCode()) {
@@ -63,14 +57,17 @@ public class Literal extends Expression {
         return Integer.parseInt(symbol.getSymbol());
     }
 
-    //return the char symbol  
+   /**
+    * Passes back the symbol of the Token.
+    * @return the the symbol of the associated Token.
+    */
     public String toChar() {
         return symbol.getSymbol();
     }
 
     /**
-     * returned the parsed boolean expression 
-     * @return 
+     * Translates the content of the Token into Boolean form.
+     * @return the Boolean representation of the symbol.
      */
     public boolean toBool() {
         return Boolean.parseBoolean(symbol.getSymbol());
@@ -111,7 +108,7 @@ public class Literal extends Expression {
 
     @Override
     public void typeCheck(ArrayList<String> msgs) {
-        return;
+       // return;
     }
 
     @Override

@@ -21,6 +21,11 @@ public class Block extends Statement {
         return (DeclStats) children.get(0);
     }
     
+    /**
+     * set the body of the Block
+     * @param s 
+     */
+
     public void setBody(DeclStats s){
         children.set(0, s);
     }

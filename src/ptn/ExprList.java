@@ -4,6 +4,7 @@ package ptn;
 import ast.ASTNode;
 import java.util.ArrayList;
 import java.util.Iterator;
+import lexer.Token;
 
 /**
  *
@@ -35,7 +36,21 @@ public class ExprList extends PTNode {
         }
         return sb.toString();
     }
-    
+     /**
+      * Gets content of the ExprList.
+      * @return ArrayList containing the content of all Expressions.
+      */
+    public ArrayList getContent(){
+    Iterator<PTNode> expressions = children.iterator();
+    Token t;
+    ArrayList<Token> params = new ArrayList();
+    while(expressions.hasNext()){
+    Expression ex = (Expression) expressions.next();
+    t = ex.getContent();
+    params.add(t);
+    }
+    return params;
+    }
     @Override
     public String format(int indent){
         StringBuilder sb = new StringBuilder();

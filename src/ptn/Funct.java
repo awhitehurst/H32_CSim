@@ -3,11 +3,13 @@ package ptn;
 import parser.Scope;
 
 /**
- *
+ * Represents a Function as a PTNode
  * @author Lab Admin
  */
 public class Funct extends PTNode {
-
+/**
+ * Creates an empty Funct
+ */
     public Funct() {
         super(4);
     }
@@ -51,6 +53,14 @@ public class Funct extends PTNode {
     public void setBody(Block b) {
         children.set(3, b);
     }
+public RetState getReturn(){
+    
+    return getBody().getBody().getReturn();
+}
+    /**
+     * return header if body is empty 
+     * @return 
+     */
 
     public boolean isHeader() {
         return getBody().isEmpty();

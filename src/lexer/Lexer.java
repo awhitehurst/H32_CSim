@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 /**
- * This class reads a file and does a lexigraphical analysis of the file, breaking
+ * This class reads a file and does a lexicographical analysis of the file, breaking
  * up the input stream into a series of tokens.
  * 
  * @author alan.whitehurst
