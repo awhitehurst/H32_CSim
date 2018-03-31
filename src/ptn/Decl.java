@@ -1,5 +1,6 @@
 package ptn;
 
+import lexer.Token;
 import parser.Scope;
 
 /**
@@ -52,6 +53,11 @@ public abstract class Decl extends PTNode {
      */
     public void setName(Name name){
         children.set(1, name);
+    }
+        @Override
+    public Token getSymbol(){
+    return children.get(1).getSymbol();
+    
     }
     
     /**

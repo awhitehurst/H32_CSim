@@ -23,6 +23,7 @@ public class SymbolTable {
         scopeStack = new Stack<>();
         scopeStack.push(global);
         functionNames = new ArrayList<>();
+        ptrFunctions = new ArrayList<>();
     }
     
     public static SymbolTable getInstance(){
@@ -42,6 +43,9 @@ public class SymbolTable {
     
     public void addFunction(String name){
         functionNames.add(name);
+    }
+        public void addPtrFunction(String name){
+        ptrFunctions.add(name);
     }
     /**
      * Checks the return statement of a given Funct against its return requirements.
@@ -69,12 +73,12 @@ public class SymbolTable {
     if(e == null){
     return t.toString().equals("void");
     }
-    String varName = e.getContent().getSymbol();
+    String varName = e.getSymbol().getSymbol();
     Type s = getType(varName);
     if(s != null){
     return s.toString().equals(t.toString());
     }else{
-    SType varType =ret.getExpr().getContent().getSType();
+    SType varType =ret.getExpr().getSymbol().getSType();
     if(varType == SType.ID){//This protects against unrecognized var references. Presumably, no unrecognized var reference should be passed here. But just in case...
     return false;
     }
@@ -102,6 +106,9 @@ public class SymbolTable {
     public boolean containsFunction(String name){
         return functionNames.contains(name);
     }
+        public boolean containsPtrFunction(String name){
+        return ptrFunctions.contains(name);
+    }
     /**
      * Uses a Name and an ExprList to check if the SymbolTable contains a corresponding function.
      * @param ident the Name to search for
@@ -125,7 +132,7 @@ public class SymbolTable {
         
         String types = "$";
         if(params != null){
-        ArrayList<Token> paramList = params.getContent();
+        ArrayList<Token> paramList = params.getContents();
         
         Type t;
     for(int i = 0; i < paramList.size(); i++){
@@ -240,5 +247,6 @@ public class SymbolTable {
     private final Scope global;
     private final Stack<Scope> scopeStack;
     private final ArrayList<String> functionNames;
+    private final ArrayList<String> ptrFunctions;
 
 }

@@ -40,13 +40,13 @@ public class ExprList extends PTNode {
       * Gets content of the ExprList.
       * @return ArrayList containing the content of all Expressions.
       */
-    public ArrayList getContent(){
+    public ArrayList getContents(){
     Iterator<PTNode> expressions = children.iterator();
     Token t;
     ArrayList<Token> params = new ArrayList();
     while(expressions.hasNext()){
     Expression ex = (Expression) expressions.next();
-    t = ex.getContent();
+    t = ex.getSymbol();
     params.add(t);
     }
     return params;

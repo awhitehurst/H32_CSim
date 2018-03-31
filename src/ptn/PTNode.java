@@ -97,7 +97,12 @@ public abstract class PTNode {
  * @return the Token associated with the Node.
  */
     public Token getSymbol() {
+        if(symbol != null){
         return symbol;
+        }
+        else{
+        return getContent();
+        }
     }
 /**
  * Sets the Token to a new Token.
@@ -143,6 +148,24 @@ public abstract class PTNode {
             }
         }
         return sb.toString();
+    }
+       private Token getContent(){
+       ArrayList child = children;
+       PTNode node;
+       Token content = null;
+        while(child != null){
+            node = (PTNode)child.get(0);
+            if(node != null){
+                if(node.symbol != null){
+              return node.symbol;
+            }
+            child = node.children;
+            }else{
+            break;
+            }
+       
+        }
+        return null;
     }
     
     public abstract ASTNode toAST();
