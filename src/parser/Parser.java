@@ -183,6 +183,8 @@ public class Parser {
             if (s.getSymbol().equals(",")) {
                 lex.next();
                 s = lex.peek();
+            }else if(!s.getSymbol().equals(")")){
+            throwParseException("Expecting \",\"", s);
             }
         }
         return n;
@@ -337,7 +339,11 @@ public class Parser {
         } else if (s.getSymbol().equals("*")) {
             VarRef ident = parseVarRef();
             return parseAssignState(ident);
-        } else if (s.getSType() == SType.ID) {
+        }else if (s.getSymbol().equals("(")){
+        return parsePTCall();
+        }
+        
+        else if (s.getSType() == SType.ID) {
             Name ident = parseName();
             s = lex.peek();
             if (s.getSymbol().equals("(")) {
@@ -751,7 +757,7 @@ public class Parser {
             }
         }
         
-        if (!stab.contains(n.getName().toString())&&!stab.containsFunction(n.getName().toString())) {
+        if (!stab.contains(n.getName().toString())&&!stab.containsFunction(n.getName().toString())) { //Added containsFunction for PTFun
             throwParseException("undefined identifier", n.getName().getSymbol());
         }
         else {
@@ -837,6 +843,8 @@ public class Parser {
             throwParseException("missing ';'", s);
         }
         stab.add(n.getName(), n.getType());
+        n.getSymbol().setSymbol(n.getNameMangle());
+        stab.add(n.getName(), n.getType());
         stab.addPtrFunction(n.getName().toString()); //Make Mangle
         
         
@@ -850,9 +858,35 @@ public class Parser {
     while(!s.getSymbol().equals(")")){
     types.addType(parseType());
     s = lex.peek();
-    
+            if (s.getSymbol().equals(",")) {
+                lex.next();
+                s = lex.peek();
+            }else if(!s.getSymbol().equals(")")){
+            throwParseException("Expecting \",\"", s);
+            }
     }
     
     return types;
+    }
+
+    private Proccall parsePTCall() throws ParseException{
+    Token s = lex.next();
+    if(!s.getSymbol().equals("(")){
+   throwParseException("Expecting \"(\"", s);
+    }
+    s = lex.next();
+    if(!s.getSymbol().equals("*")){
+    throwParseException("Expecting \"*\"", s);
+    }
+    //lex.next();
+    // 
+    Name n = parseName();
+   s = lex.next();
+    if(!s.getSymbol().equals(")")){
+      throwParseException("Expecting \")\"", s);  
+        
+    }
+    return parseProccallState(n);
+    
     }
 }

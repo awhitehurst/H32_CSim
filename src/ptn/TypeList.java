@@ -30,6 +30,7 @@ public class TypeList extends PTNode {
         Iterator<PTNode> types = children.iterator();
         while (types.hasNext()) {
             Type arg = (Type) types.next();
+            sb.append("_");
             sb.append(arg.toPolish());
         }
         return sb.toString();

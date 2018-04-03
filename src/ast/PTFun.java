@@ -56,12 +56,14 @@ public class PTFun extends VarDecl{
     }
     @Override
     public Type getType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+ //System.out.println("Getting type of " + getMangledName() + " as " + scope.getType(getMangledName()).toAST());
+        return (scope.getType(getName().toString())).toAST();
     }
 
     @Override
     public void typeCheck(ArrayList<String> msgs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+    
     }
 
     @Override
@@ -70,8 +72,21 @@ public class PTFun extends VarDecl{
     }
 
     @Override
-    public String format(int indent, boolean suppressNewline) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public String format(int indent, boolean suppressNL) {
+               StringBuilder sb = new StringBuilder();
+        if (!suppressNL) {
+            sb.append(indent(indent));
+        }
+        sb.append("[PTFun: ");
+        sb.append(this.getName().format(indent, true));
+        sb.append(" Args: ");
+        if (getArgs() != null) {
+            sb.append(this.getArgs().format(indent, true));
+        }
+        sb.append(" ]");
+        if (!suppressNL) {
+            sb.append("\n");
+        }
+        return sb.toString();    }
     
 }

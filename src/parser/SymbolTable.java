@@ -170,7 +170,10 @@ public class SymbolTable {
     }
     
     public Scope getContainingScope(String token){
-        Scope scope = scopeStack.peek();
+        if(functionNames.contains(token)){//CHECK THIS
+        return global;
+        }
+        Scope scope = scopeStack.peek();       
         while(scope != null){
             if(scope.contains(token)){
                 return scope;

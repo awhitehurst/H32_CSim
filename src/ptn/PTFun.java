@@ -15,13 +15,6 @@ public class PTFun extends VarDecl{
     super();
     }
 
-        public Name getName() {
-        return (Name) children.get(1);
-    }
-
-    public void setName(Name name) {
-        children.set(1, name);
-    }
     public TypeList getTypeList(){
     return (TypeList) children.get(3);
     
@@ -34,13 +27,6 @@ public class PTFun extends VarDecl{
         return children.get(3) != null;
     }
 
-    public Scope getScope() {
-        return scope;
-    }
-
-    public void setScope(Scope scope) {
-        this.scope = scope;
-    }
    public String getNameMangle() {
         if (getTypeList() == null) {
             return getName().toString() + "$";
