@@ -11,7 +11,7 @@ package ptn;
 public class VarDecl extends Decl {
     
     public VarDecl(){
-        super(3);
+        super(4);
     }
 
     @Override

@@ -2,8 +2,9 @@ int increment(int i){
 return i;
 }
 int boing(int u){
-char y = increment(u);
-return increment(8);
+char y = 'c';
+u = increment(8);
+return u;
 }
 int develop(int i, char c, int v){ 
 
@@ -16,11 +17,10 @@ return;             //allows return with void;
 }
 
 main(){
+int v;
 int u = 9;
-int v = 'c';
 u = v;
 char x;
-u = x;
 
 int* pointer = &v;
 
@@ -30,6 +30,8 @@ while(v < u){
 int t = 9;
 u = u +1;
 }
+void* star;
+star = u;
 returnfalse();
 //increment(); //Calling function which requires parameters without any.
 increment(v);
