@@ -256,7 +256,7 @@ public class Parser {
         }
         n.setType(parseType());
         n.getType().setStatic(isStatic);
-        s =lex.next(); //OOpppps
+        s =lex.peek();
         if(s.getSymbol().equals("(")){
         return parsePTFun(n.getType());
         }
@@ -812,14 +812,16 @@ public class Parser {
 
     private Decl parsePTFun(Type t) throws ParseException{
         PTFun n= new PTFun();
-        Token s = lex.peek();
+        Token s = lex.next();
         n.setType(t);
+        if(!s.getSymbol().equals("(")){
+        throwParseException("Expecting ( ", s);
+        }
+        s = lex.next();
         if(!s.getSymbol().equals("*")){
         throwParseException("Expecting * ", s);
         
         }
-        s = lex.next();
-        //s = lex.peek();
         n.setName(parseName());
         s = lex.next();
         if(!s.getSymbol().equals(")")){

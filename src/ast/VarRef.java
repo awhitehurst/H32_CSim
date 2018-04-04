@@ -172,7 +172,7 @@ public class VarRef extends Expression {
 
     @Override
     public Type getType() {
-        return scope.getType(v.toString()).toAST();
+        return scope.getType(v.getName()).toAST();
     }
     
     

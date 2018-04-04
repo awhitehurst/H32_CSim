@@ -151,7 +151,7 @@ public class Type extends ASTNode implements Comparable {
      * @return true if compatible, or false if not compatible.
      */
     public boolean isTypeCompatible(Type t) {
-        if(typeCode == 0){ ///CHECK THIS.
+        if(typeCode == 0&& pointer >0){ ///CHECK THIS.
         return true;
         }
         return typeCode == t.typeCode && pointer == t.pointer;
