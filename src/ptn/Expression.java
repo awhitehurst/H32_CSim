@@ -60,26 +60,6 @@ public class Expression extends PTNode {
      * Mines through levels of expressions to retrieve the symbol of the expression.
      * @return the symbol of the expression as a Token
      */
-    public Token getContent(){
-         ArrayList child = children;
-       PTNode node;
-       Token content = null;
-        while(child != null){
-            node = (PTNode)child.get(0);
-            if(node != null){
-                if(node.symbol != null){
-              return node.symbol;
-            }
-            child = node.children;
-            }else{
-            break;
-            }
-       
-        }
-        return null;
-    }
-    
-    
     public String toPolish(){
         
       
