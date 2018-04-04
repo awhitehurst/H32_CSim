@@ -6,8 +6,11 @@ package ast;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import lexer.SType;
 import lexer.Token;
 import parser.Scope;
+import ptn.Funct;
+import ptn.RetState;
 
 /**
  * A function holds a Token, a Name, a Type, an ArrayList of parameters, and a Block. May be a header function located
@@ -71,7 +74,7 @@ public class Function extends ASTNode {
  * Retrieves the Type of the function.
  * @return The Type of the function.
  */
-    public Type getType() {
+    public Type getType(String token) {
         return type;
     }
 /**
@@ -136,6 +139,47 @@ public class Function extends ASTNode {
  */
     public void setScope(Scope scope) {
         this.scope = scope;
+    }
+    
+    public boolean checkReturn(Funct funct){
+    return checkReturn(funct, funct.getReturn());
+    }
+   
+    public boolean checkReturn(Funct funct, RetState ret){
+    String mangle = funct.getName().toString();
+    ast.Type t = getType(mangle);
+    ptn.Funcall call = ret.hasFuncall();
+    if(call != null){
+    return checkReturn(mangle, call);
+    
+    }
+    ptn.Expression e =ret.getExpr();
+    if(e == null){
+    return t.toString().equals("void");
+    }
+    String varName = e.getContent().getSymbol();
+    ast.Type s = getType(varName);
+    if(s != null){
+    return s.toString().equals(t.toString());
+    }else{
+    SType varType =ret.getExpr().getContent().getSType();
+    if(varType == SType.ID){//This protects against unrecognized var references. Presumably, no unrecognized var reference should be passed here. But just in case...
+    return false;
+    }
+    String type = SType.getSTypeName(varType);
+    return type.equals(t.toString());
+    
+    }
+    }
+    
+    private boolean checkReturn(String mangle, ptn.Funcall call){
+    ast.Type t = getType(mangle);
+    String retMangle = call.getMangle();
+    ast.Type s = getType(retMangle);
+    if(s != null){
+    return t.toString().equals(s.toString());
+    }
+    return false;
     }
 
     @Override
