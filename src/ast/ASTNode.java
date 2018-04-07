@@ -8,6 +8,8 @@ import lexer.Token;
  * @author Alan
  */
 public abstract class ASTNode {
+
+   
     /**
      * Sets the token to null
      */
@@ -64,6 +66,7 @@ public abstract class ASTNode {
     
     //
     protected Token symbol;
+    protected ArrayList<ASTNode> children;
 
     
 }
