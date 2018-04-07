@@ -17,27 +17,28 @@ return;             //allows return with void;
 }
 
 main(){
-int v;
-int u = 9;
-u = v;
-char x;
+    int v;
+    int u = 9;
+    u = v;
+    char x;
 
-int* pointer = &v;
+    int* pointer = &v;
 
-increment(9);
-while(v < u){
+    increment(9);
+    while(v < u){
 
-int t = 9;
-u = u +1;
-}
-void* star;
-star = u;
-returnfalse();
-//increment(); //Calling function which requires parameters without any.
-increment(v);
-develop(v, 'c', u); //Correct call;
-//develop(v);
-//increment(v, v, v, v, v, 9, v); //Invalid function call.
+    int t = 9;
+    u = u +1;
+    }
+    void* star;
+    star = u;
+    returnfalse();
+    //increment(); //Calling function which requires parameters without any.
+    increment(v);
+    develop(v, 'c', u); //Correct call;
+    //develop(v);
+    //increment(v, v, v, v, v, 9, v); //Invalid function call.
+void* u; int v =8; u = &v; int* i = u;
 
-}
+    }
 

@@ -757,7 +757,7 @@ public class Parser {
             }
         }
         
-        if (!stab.contains(n.getName().toString())&&!stab.containsFunction(n.getName().toString())) { //Added containsFunction for PTFun
+        if (!stab.contains(n.getName().toString())) { //Added containsFunction for PTFun
             throwParseException("undefined identifier", n.getName().getSymbol());
         }
         else {

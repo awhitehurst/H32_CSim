@@ -9,8 +9,7 @@ import java.util.Iterator;
 import lexer.SType;
 import lexer.Token;
 import parser.Scope;
-import ptn.Funct;
-import ptn.RetState;
+
 
 /**
  * A function holds a Token, a Name, a Type, an ArrayList of parameters, and a Block. May be a header function located
@@ -140,29 +139,27 @@ public class Function extends ASTNode {
     public void setScope(Scope scope) {
         this.scope = scope;
     }
-    
-    public boolean checkReturn(Funct funct){
-    return checkReturn(funct, funct.getReturn());
-    }
    
-    public boolean checkReturn(Funct funct, RetState ret){
-    String mangle = funct.getName().toString();
+    public boolean checkReturn(){
+    String mangle = getName().toString();
     ast.Type t = getType(mangle);
-    ptn.Funcall call = ret.hasFuncall();
+   
+    ast.Funcall call = r.hasFuncall();
     if(call != null){
     return checkReturn(mangle, call);
     
     }
-    ptn.Expression e =ret.getExpr();
+    Expression e =r.getValue();
     if(e == null){
     return t.toString().equals("void");
     }
-    String varName = e.getContent().getSymbol();
+    String varName = e.getSymbol().getSymbol();
+    
     ast.Type s = getType(varName);
     if(s != null){
     return s.toString().equals(t.toString());
     }else{
-    SType varType =ret.getExpr().getContent().getSType();
+    SType varType =r.getValue().getSymbol().getSType();
     if(varType == SType.ID){//This protects against unrecognized var references. Presumably, no unrecognized var reference should be passed here. But just in case...
     return false;
     }
@@ -172,9 +169,9 @@ public class Function extends ASTNode {
     }
     }
     
-    private boolean checkReturn(String mangle, ptn.Funcall call){
+    private boolean checkReturn(String mangle, Funcall call){
     ast.Type t = getType(mangle);
-    String retMangle = call.getMangle();
+    String retMangle = call.getMangledName();
     ast.Type s = getType(retMangle);
     if(s != null){
     return t.toString().equals(s.toString());
@@ -241,7 +238,16 @@ public class Function extends ASTNode {
         }
         return sb.toString();
     }
+
+    public Return getR() {
+        return r;
+    }
+
+    public void setR(Return r) {
+        this.r = r;
+    }
     //
+    private Return r;
     private Name name;
     private Type type;
     private ArrayList<Param> params;

@@ -83,5 +83,9 @@ public class Return extends Statement {
     }
     private Expression value;
 
+    Funcall hasFuncall() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }
