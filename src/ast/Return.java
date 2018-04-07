@@ -5,6 +5,7 @@
 package ast;
 
 import java.util.ArrayList;
+import lexer.SType;
 import lexer.Token;
 
 /**
@@ -48,27 +49,14 @@ public class Return extends Statement {
         this.value = value;
     }
     
-     public Funcall hasFuncall(){
-          
-            ASTNode node;
-       
-        while(value != null){
-            node = (ASTNode)expression.get(0);
-            if(node instanceof Funcall){
-                return (Funcall)node;
+     public Funcall hasFuncall(){ 
+         if(value instanceof Expression){
+                return (Funcall)value;
               
             }
-            if(node != null){
-            child = node.children;
-            }else{
-            break;
-            }
-            
-            }
-       
-        
-        return null;
+             return null;
     }
+     
     
     @Override
     public void typeCheck(ArrayList<String> msgs) {
@@ -105,5 +93,6 @@ public class Return extends Statement {
     }
     private Expression value;
 
+   
     
 }

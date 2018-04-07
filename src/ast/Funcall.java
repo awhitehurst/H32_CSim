@@ -83,7 +83,7 @@ public class Funcall extends Expression {
         this.scope = scope;
     }
     
-    String getMangledName(){
+    public String getMangledName(){
         return name.getName() + (args!=null?getArgs().toPolish():"$");
     }
     
@@ -95,10 +95,15 @@ public class Funcall extends Expression {
     }
 
     @Override
+    public Token getSymbol(){
+    return name.symbol;
+    }
+    @Override
     public void typeCheck(ArrayList<String> msgs) {
         if(args!=null){
             args.typeCheck(msgs);
         }
+        
     }
 
     @Override

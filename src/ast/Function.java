@@ -9,9 +9,7 @@ import java.util.Iterator;
 import lexer.SType;
 import lexer.Token;
 import parser.Scope;
-import ptn.Expression;
-import ptn.Funct;
-import ptn.RetState;
+
 
 /**
  * A function holds a Token, a Name, a Type, an ArrayList of parameters, and a Block. May be a header function located
@@ -141,27 +139,27 @@ public class Function extends ASTNode {
     public void setScope(Scope scope) {
         this.scope = scope;
     }
-    
    
     public boolean checkReturn(){
-        
     String mangle = getName().toString();
-    ast.Type t = scope.getType(mangle).toAST();
-        Funcall call = r.hasFuncall();//need to create hasFuncall
+    ast.Type t = getType(mangle);
+   
+    ast.Funcall call = r.hasFuncall();
     if(call != null){
     return checkReturn(mangle, call);
     
     }
-        Expression e = r.getExpr();
+    Expression e =r.getValue();
     if(e == null){
     return t.toString().equals("void");
     }
-    String varName = e.getContent().getSymbol();
-    ast.Type s = scope.getType(varName).toAST();
+    String varName = e.getSymbol().getSymbol();
+    
+    ast.Type s = getType(varName);
     if(s != null){
     return s.toString().equals(t.toString());
     }else{
-    SType varType =r.getExpr();
+    SType varType =r.getValue().getSymbol().getSType();
     if(varType == SType.ID){//This protects against unrecognized var references. Presumably, no unrecognized var reference should be passed here. But just in case...
     return false;
     }
@@ -171,10 +169,10 @@ public class Function extends ASTNode {
     }
     }
     
-    private boolean checkReturn(String mangle, ast.Funcall call){
+    private boolean checkReturn(String mangle, Funcall call){
     ast.Type t = getType(mangle);
     String retMangle = call.getMangledName();
-    ast.Type s = scope.getType(retMangle).toAST();
+    ast.Type s = getType(retMangle);
     if(s != null){
     return t.toString().equals(s.toString());
     }
@@ -186,7 +184,6 @@ public class Function extends ASTNode {
         if(!isHeader()){
             body.typeCheck(msgs);
         }
-        checkReturn();
     }
 
     @Override
@@ -241,18 +238,21 @@ public class Function extends ASTNode {
         }
         return sb.toString();
     }
+
+    public Return getR() {
+        return r;
+    }
+
+    public void setR(Return r) {
+        this.r = r;
+    }
     //
+    private Return r;
     private Name name;
     private Type type;
     private ArrayList<Param> params;
     private boolean header;
     private Block body;
     private Scope scope;
-    private Return r;
-
-    public void setReturn(Return r) {
-        this.r = r;
-    }
- 
 
 }
