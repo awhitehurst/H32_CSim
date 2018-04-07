@@ -9,6 +9,7 @@ import java.util.Iterator;
 import lexer.SType;
 import lexer.Token;
 import parser.Scope;
+import ptn.Expression;
 import ptn.Funct;
 import ptn.RetState;
 
@@ -141,19 +142,17 @@ public class Function extends ASTNode {
         this.scope = scope;
     }
     
-    public boolean checkReturn(Funct funct){
-    return checkReturn(funct, funct.getReturn());
-    }
    
-    public boolean checkReturn(Funct funct, RetState ret){
-    String mangle = funct.getName().toString();
+    public boolean checkReturn(){
+        
+    String mangle = getName().toString();
     ast.Type t = scope.getType(mangle).toAST();
-    ptn.Funcall call = ret.hasFuncall();
+        Funcall call = r.hasFuncall();//need to create hasFuncall
     if(call != null){
     return checkReturn(mangle, call);
     
     }
-    ptn.Expression e =ret.getExpr();
+        Expression e = r.getExpr();
     if(e == null){
     return t.toString().equals("void");
     }
@@ -162,7 +161,7 @@ public class Function extends ASTNode {
     if(s != null){
     return s.toString().equals(t.toString());
     }else{
-    SType varType =ret.getExpr().getContent().getSType();
+    SType varType =r.getExpr();
     if(varType == SType.ID){//This protects against unrecognized var references. Presumably, no unrecognized var reference should be passed here. But just in case...
     return false;
     }
@@ -172,9 +171,9 @@ public class Function extends ASTNode {
     }
     }
     
-    private boolean checkReturn(String mangle, ptn.Funcall call){
+    private boolean checkReturn(String mangle, ast.Funcall call){
     ast.Type t = getType(mangle);
-    String retMangle = call.getMangle();
+    String retMangle = call.getMangledName();
     ast.Type s = scope.getType(retMangle).toAST();
     if(s != null){
     return t.toString().equals(s.toString());
@@ -187,6 +186,7 @@ public class Function extends ASTNode {
         if(!isHeader()){
             body.typeCheck(msgs);
         }
+        checkReturn();
     }
 
     @Override
@@ -248,5 +248,11 @@ public class Function extends ASTNode {
     private boolean header;
     private Block body;
     private Scope scope;
+    private Return r;
+
+    public void setReturn(Return r) {
+        this.r = r;
+    }
+ 
 
 }
