@@ -48,28 +48,6 @@ public class Return extends Statement {
         this.value = value;
     }
     
-     public Funcall hasFuncall(){
-          
-            ASTNode node;
-       
-        while(value != null){
-            node = (ASTNode)expression.get(0);
-            if(node instanceof Funcall){
-                return (Funcall)node;
-              
-            }
-            if(node != null){
-            child = node.children;
-            }else{
-            break;
-            }
-            
-            }
-       
-        
-        return null;
-    }
-    
     @Override
     public void typeCheck(ArrayList<String> msgs) {
         if(getValue()!=null){

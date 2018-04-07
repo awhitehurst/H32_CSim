@@ -83,7 +83,7 @@ public class Funcall extends Expression {
         this.scope = scope;
     }
     
-    String getMangledName(){
+    private String getMangledName(){
         return name.getName() + (args!=null?getArgs().toPolish():"$");
     }
     
