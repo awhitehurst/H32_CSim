@@ -9,7 +9,6 @@ import parser.Scope;
  * @author daugh
  */
 public class PTFun extends VarDecl{
-    Scope scope;
     public PTFun(){
     
     super();
@@ -37,11 +36,11 @@ public class PTFun extends VarDecl{
     @Override
     public ast.PTFun toAST() {
         ast.PTFun ptFun = new ast.PTFun();
-        ptFun.setName(getName().toAST());
+        ptFun.setVariable(getName().toAST());
         if (hasArgs()) {
             ptFun.setArgs((ast.TypeList) getTypeList().toAST());
         }
-        ptFun.setScope(scope);
+        ptFun.setScope(getScope());
         return ptFun;
     }
 }

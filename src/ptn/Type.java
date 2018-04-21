@@ -88,9 +88,19 @@ public class Type extends PTNode {
                 retVal = new ast.Type(ast.Type.VOID, pointer, symbol);
         }
         retVal.setStatic(isStatic());
+        retVal.setMangle(mangle);
         return retVal;
     }
-    
+
+    public String getMangle() {
+        return mangle;
+    }
+
+    public void setMangle(String mangle) {
+        this.mangle = mangle;
+        pointer ++;
+    }
+    private String mangle;
     private int pointer;
     private boolean stat;
     

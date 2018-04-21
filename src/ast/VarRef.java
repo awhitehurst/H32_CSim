@@ -177,8 +177,7 @@ public class VarRef extends Expression {
     
     
     public Type getType(boolean isTarget){
-        
-        Type t = new Type(scope.getType(v.getName()).toAST());
+              Type t = new Type(scope.getType(v.getName()).toAST());
         if(isTarget && this.isIndirect()){
             t.setPointer(t.getPointer()-1);
         }

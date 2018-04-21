@@ -17,7 +17,6 @@ public class PTFun extends VarDecl{
 
     private Name name;
     private TypeList args;
-    private Scope scope;
 
      public PTFun(Token symbol) {
         super(symbol);
@@ -31,21 +30,6 @@ public class PTFun extends VarDecl{
         this.name = name;
         this.args = args;
     }
-      /**
-     * Returns name of the variable 
-     * @return 
-     */
-    public Name getName() {
-        return name;
-    }
-
-    /**
-     *Sets the name of the PTFun value .
-     * @param name 
-     */
-    public void setName(Name name) {
-        this.name = name;
-    }
     
     public void setArgs(TypeList args){
     
@@ -56,8 +40,8 @@ public class PTFun extends VarDecl{
     }
     @Override
     public Type getType() {
- //System.out.println("Getting type of " + getMangledName() + " as " + scope.getType(getMangledName()).toAST());
-        return (scope.getType(getName().toString())).toAST();
+ System.out.println("Getting type of " + getVariable() + " as " + getScope().getType(getVariable().getName()).toAST());
+        return (getScope().getType(getVariable().getName())).toAST();
     }
 
     @Override
@@ -78,7 +62,7 @@ public class PTFun extends VarDecl{
             sb.append(indent(indent));
         }
         sb.append("[PTFun: ");
-        sb.append(this.getName().format(indent, true));
+        sb.append(this.getVariable().format(indent, true));
         sb.append(" Args: ");
         if (getArgs() != null) {
             sb.append(this.getArgs().format(indent, true));
