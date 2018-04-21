@@ -5,6 +5,7 @@
 package ast;
 
 import java.util.ArrayList;
+import lexer.SType;
 import lexer.Token;
 
 /**
@@ -48,6 +49,14 @@ public class Return extends Statement {
         this.value = value;
     }
     
+     public Funcall hasFuncall(){ 
+         if(value instanceof Expression){
+                return (Funcall)value;
+              
+            }
+             return null;
+    }
+
     @Override
     public void typeCheck(ArrayList<String> msgs) {
         if(getValue()!=null){

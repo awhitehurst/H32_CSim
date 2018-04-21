@@ -75,6 +75,28 @@ public class Assignment extends Statement {
     @Override
     public void typeCheck(ArrayList<String> msgs) {
         getExpr().typeCheck(msgs);
+        Type t = varRef.getType(true);
+        if(t.getMangle() != null){
+        if((getExpr() instanceof Unary)&& !((Unary)getExpr()).isPTRef()){
+            msgs.add(
+                    String.format("Expecting Pointer function at (%s) and (%s)",
+                            varRef.getVariable().getSymbol().getLine(),
+                            varRef.getVariable().getSymbol().getCol()));  
+        }
+        
+        
+         String mangle = t.getMangle();
+         mangle = mangle.substring(mangle.lastIndexOf('$'));
+         String name = ((PTRef)((Unary)getExpr()).getTerm()).getVariable().getName();
+        if(!mangle.equals(name.substring(name.lastIndexOf('$')))){
+                 msgs.add(
+                    String.format("Parameters of the Pointer Function and the function it points to do not match. Found at line (%s) column (%s)",
+                            varRef.getVariable().getSymbol().getLine(),
+                            varRef.getVariable().getSymbol().getCol())); 
+         }
+        }
+        
+        
         if(!varRef.getType(true).isTypeCompatible(getExpr().getType())){
             msgs.add(
                     String.format("Type of expression (%s) does not match type of variable (%s) at line %d, column %d.",

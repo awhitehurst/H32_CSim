@@ -46,6 +46,10 @@ public class Unary extends Expression {
     public Operator getOp() {
         return op;
     }
+    public boolean isPTRef(){
+    return term instanceof PTRef;
+    
+    }
 
     /**
      * set the value of the operator 

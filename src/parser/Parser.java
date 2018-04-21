@@ -20,8 +20,10 @@ import ptn.IncDecState;
 import ptn.Literal;
 import ptn.Name;
 import ptn.Operator;
+import ptn.PTCall;
 import ptn.PTFun;
 import ptn.PTNode;
+import ptn.PTRef;
 import ptn.Param;
 import ptn.ParamList;
 import ptn.Proccall;
@@ -256,7 +258,7 @@ public class Parser {
         }
         n.setType(parseType());
         n.getType().setStatic(isStatic);
-        s =lex.next(); //OOpppps
+        s =lex.peek();
         if(s.getSymbol().equals("(")){
         return parsePTFun(n.getType());
         }
@@ -449,14 +451,14 @@ public class Parser {
         RetState n = new RetState();
         s = lex.peek();
         if (!s.getSymbol().equals(";")) {
-            if(s.getSType()==SType.ID)
+   /*         if(s.getSType()==SType.ID)
             {
              n.setExpr(parsePrimary());
 
             
-            }else{
+            }else{*/
             n.setExpr(parseExpression());
-            }
+           // }
         }
         s = lex.next();
         if (!s.getSymbol().equals(";")) {
@@ -631,6 +633,10 @@ public class Parser {
         Token s = lex.peek();
         if (s.getSType() == SType.OP) {
             n.setOp(parseOp());
+            if ("&".equals(s.getSymbol())){
+             n.setLhs(parseVarRef());
+             return n;
+            }
         }
         n.setLhs(parsePrimary());
         return n;
@@ -718,15 +724,21 @@ public class Parser {
         return n;
     }
 
-    private VarRef parseVarRef() throws ParseException {
+      private VarRef parseVarRef() throws ParseException {
         VarRef n = new VarRef();
         Token s = lex.peek();
+        int i = 0;
         while (s.getSymbol().equals("*")) {
+            i++;
             lex.next();
-            n.incIndirect();
+            //n.incIndirect();
             s = lex.peek();
         }
-        n.setName(parseName());
+        Name ident = parseName();
+        n = parseVarRef(ident);
+        n.setIndirect(i);
+        return n;
+        /*n.setName(parseName());
         s = lex.peek();
         if (s.getSymbol().equals("[")) {
             lex.next();
@@ -741,8 +753,9 @@ public class Parser {
         } else {
             n.setScope(stab.getContainingScope(n.getName().toString()));
         }
-        return n;
+        return n;*/
     }
+
 
     private VarRef parseVarRef(Name name) throws ParseException {
         VarRef n = new VarRef();
@@ -756,8 +769,33 @@ public class Parser {
                 throwParseException("expecting ']'", s);
             }
         }
+        //Check to see if the variable reference is a function name. Does it have an open and closed paren?
+        if (s.getSymbol().equals("(")) {
+            n = new PTRef();
+            n.setName(name);
+            //parse the type list. Find out what's in the parameter list
+            String mangle = n.getName().toString() + "$";
+            lex.next();
+            s = lex.next();
+            while (!s.getSymbol().equals(")")){
+                
+                mangle += "_" + s.getSymbol().substring(0,1);
+                s = lex.next();
+            }
+            n.getName().getSymbol().setSymbol(mangle);
+            
+            //s = lex.next();
+            if (!s.getSymbol().equals(")")) {
+                throwParseException("expecting ')'", s);
+            } /*else {
+               //add it to the symbol table
+               String e = n.getName().getSymbol().toString();
+               stab.addFunction(n.getName().getSymbol().toString());//n.getName().toString()
+            }*/
+        }
         
-        if (!stab.contains(n.getName().toString())&&!stab.containsFunction(n.getName().toString())) { //Added containsFunction for PTFun
+        //String t = n.getName().getSymbol().toString();
+        if (!stab.contains(n.getName().toString())) { 
             throwParseException("undefined identifier", n.getName().getSymbol());
         }
         else {
@@ -812,14 +850,16 @@ public class Parser {
 
     private Decl parsePTFun(Type t) throws ParseException{
         PTFun n= new PTFun();
-        Token s = lex.peek();
+        Token s = lex.next();
         n.setType(t);
+        if(!s.getSymbol().equals("(")){
+        throwParseException("Expecting ( ", s);
+        }
+        s = lex.next();
         if(!s.getSymbol().equals("*")){
         throwParseException("Expecting * ", s);
         
         }
-        s = lex.next();
-        //s = lex.peek();
         n.setName(parseName());
         s = lex.next();
         if(!s.getSymbol().equals(")")){
@@ -842,13 +882,15 @@ public class Parser {
         if (!s.getSymbol().equals(";")) {
             throwParseException("missing ';'", s);
         }
+        n.getType().setMangle(n.getNameMangle());
         stab.add(n.getName(), n.getType());
-        n.getSymbol().setSymbol(n.getNameMangle());
+       n.getSymbol().setSymbol(n.getNameMangle());
         stab.add(n.getName(), n.getType());
-        stab.addPtrFunction(n.getName().toString()); //Make Mangle
+        n.setScope(stab.getContainingScope(n.getName().toString()));
+     //   stab.addPtrFunction(n.getName().toString()); //Make Mangle
         
         
-        n.setScope(stab.getCurrentScope());
+       // n.setScope(stab.getCurrentScope());
         
     return n;
     }
@@ -887,6 +929,5 @@ public class Parser {
         
     }
     return parseProccallState(n);
-    
     }
 }
