@@ -928,6 +928,7 @@ public class Parser {
       throwParseException("Expecting \")\"", s);  
         
     }
-    return parseProccallState(n);
+    Proccall c = parseProccallState(n);
+    return new PTCall(c);
     }
 }
