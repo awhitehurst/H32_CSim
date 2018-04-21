@@ -5,6 +5,7 @@
 package ast;
 
 import java.util.ArrayList;
+import lexer.SType;
 import lexer.Token;
 
 /**
@@ -48,6 +49,14 @@ public class Return extends Statement {
         this.value = value;
     }
     
+     public Funcall hasFuncall(){ 
+         if(value instanceof Expression){
+                return (Funcall)value;
+              
+            }
+             return null;
+    }
+
     @Override
     public void typeCheck(ArrayList<String> msgs) {
         if(getValue()!=null){
@@ -82,10 +91,6 @@ public class Return extends Statement {
         return sb.toString();
     }
     private Expression value;
-
-    Funcall hasFuncall() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     
 }

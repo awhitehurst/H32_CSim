@@ -451,14 +451,14 @@ public class Parser {
         RetState n = new RetState();
         s = lex.peek();
         if (!s.getSymbol().equals(";")) {
-            if(s.getSType()==SType.ID)
+   /*         if(s.getSType()==SType.ID)
             {
              n.setExpr(parsePrimary());
 
             
-            }else{
+            }else{*/
             n.setExpr(parseExpression());
-            }
+           // }
         }
         s = lex.next();
         if (!s.getSymbol().equals(";")) {
