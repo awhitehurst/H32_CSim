@@ -85,7 +85,7 @@ public class VarRef extends Expression {
         return varRef;
     }
     
-    private int indirect;
+    protected int indirect;
     private Scope scope;
     
 }

@@ -56,8 +56,7 @@ public class Return extends Statement {
             }
              return null;
     }
-     
-    
+
     @Override
     public void typeCheck(ArrayList<String> msgs) {
         if(getValue()!=null){
@@ -93,6 +92,5 @@ public class Return extends Statement {
     }
     private Expression value;
 
-   
     
 }

@@ -49,14 +49,14 @@ public class Type extends ASTNode implements Comparable {
      * @param symbol 
      */
     public Type(int typeCode, int pointer, Token symbol){
-        this(typeCode, pointer, symbol, false);
+        this(typeCode, pointer, symbol, false, null);
     }
  /**
   * Uses a specified type to create an identical type.
   * @param t 
   */   
     public Type(Type t){
-        this(t.typeCode, t.pointer, t.symbol, t.stat);
+        this(t.typeCode, t.pointer, t.symbol, t.stat, t.mangle);
     }
 /**
  * Fully specified Constructor.
@@ -65,12 +65,13 @@ public class Type extends ASTNode implements Comparable {
  * @param symbol
  * @param stat 
  */
-    public Type(int typeCode, int pointer, Token symbol, boolean stat) {
+    public Type(int typeCode, int pointer, Token symbol, boolean stat, String mangle) {
         super(symbol);
         this.typeCode = typeCode;
         this.pointer = pointer;
         this.symbol = symbol;
         this.stat = stat;
+        this.mangle = mangle;
     }
 /**
  * Sets the typeCode to provided typeCode
@@ -151,6 +152,9 @@ public class Type extends ASTNode implements Comparable {
      * @return true if compatible, or false if not compatible.
      */
     public boolean isTypeCompatible(Type t) {
+        if(typeCode == 0&& pointer >0){ ///CHECK THIS.
+        return true;
+        }
         return typeCode == t.typeCode && pointer == t.pointer;
     }
 
@@ -218,6 +222,15 @@ public class Type extends ASTNode implements Comparable {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 //
+    String mangle;
+
+    public String getMangle() {
+        return mangle;
+    }
+
+    public void setMangle(String mangle) {
+        this.mangle = mangle;
+    }
     private int typeCode;
     private int pointer;
     private boolean stat;

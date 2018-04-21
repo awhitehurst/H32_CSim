@@ -20,7 +20,10 @@ import ptn.IncDecState;
 import ptn.Literal;
 import ptn.Name;
 import ptn.Operator;
+import ptn.PTCall;
+import ptn.PTFun;
 import ptn.PTNode;
+import ptn.PTRef;
 import ptn.Param;
 import ptn.ParamList;
 import ptn.Proccall;
@@ -28,6 +31,7 @@ import ptn.Program;
 import ptn.RetState;
 import ptn.Statement;
 import ptn.Type;
+import ptn.TypeList;
 import ptn.VarDecl;
 import ptn.VarRef;
 import ptn.WhileState;
@@ -181,6 +185,8 @@ public class Parser {
             if (s.getSymbol().equals(",")) {
                 lex.next();
                 s = lex.peek();
+            }else if(!s.getSymbol().equals(")")){
+            throwParseException("Expecting \",\"", s);
             }
         }
         return n;
@@ -252,6 +258,10 @@ public class Parser {
         }
         n.setType(parseType());
         n.getType().setStatic(isStatic);
+        s =lex.peek();
+        if(s.getSymbol().equals("(")){
+        return parsePTFun(n.getType());
+        }
         n.setName(parseName());
         n.setScope(stab.getCurrentScope());
         s = lex.peek();
@@ -331,7 +341,11 @@ public class Parser {
         } else if (s.getSymbol().equals("*")) {
             VarRef ident = parseVarRef();
             return parseAssignState(ident);
-        } else if (s.getSType() == SType.ID) {
+        }else if (s.getSymbol().equals("(")){
+        return parsePTCall();
+        }
+        
+        else if (s.getSType() == SType.ID) {
             Name ident = parseName();
             s = lex.peek();
             if (s.getSymbol().equals("(")) {
@@ -619,6 +633,10 @@ public class Parser {
         Token s = lex.peek();
         if (s.getSType() == SType.OP) {
             n.setOp(parseOp());
+            if ("&".equals(s.getSymbol())){
+             n.setLhs(parseVarRef());
+             return n;
+            }
         }
         n.setLhs(parsePrimary());
         return n;
@@ -663,6 +681,7 @@ public class Parser {
     private Funcall parseFuncall(Name ident) throws ParseException {
         Funcall n = new Funcall();
         n.setName(ident);
+        n.setSymbol(ident.getSymbol());
         Token s = lex.next();
         if (!s.getSymbol().equals("(")) {
             throwParseException("expecting '('", s);
@@ -676,6 +695,7 @@ public class Parser {
             throwParseException("expecting ')'", s);
         }
         ArrayList results = stab.contains(ident, n.getArgs());
+        //n.getSymbol().setSymbol((String)results.get(1));
         if (!(Boolean)results.get(0)) {
             throwParseException("undefined function. Function found: " + results.get(1), n.getName().getSymbol());
         } else {
@@ -704,15 +724,21 @@ public class Parser {
         return n;
     }
 
-    private VarRef parseVarRef() throws ParseException {
+      private VarRef parseVarRef() throws ParseException {
         VarRef n = new VarRef();
         Token s = lex.peek();
+        int i = 0;
         while (s.getSymbol().equals("*")) {
+            i++;
             lex.next();
-            n.incIndirect();
+            //n.incIndirect();
             s = lex.peek();
         }
-        n.setName(parseName());
+        Name ident = parseName();
+        n = parseVarRef(ident);
+        n.setIndirect(i);
+        return n;
+        /*n.setName(parseName());
         s = lex.peek();
         if (s.getSymbol().equals("[")) {
             lex.next();
@@ -727,8 +753,9 @@ public class Parser {
         } else {
             n.setScope(stab.getContainingScope(n.getName().toString()));
         }
-        return n;
+        return n;*/
     }
+
 
     private VarRef parseVarRef(Name name) throws ParseException {
         VarRef n = new VarRef();
@@ -742,9 +769,36 @@ public class Parser {
                 throwParseException("expecting ']'", s);
             }
         }
-        if (!stab.contains(n.getName().toString())) {
+        //Check to see if the variable reference is a function name. Does it have an open and closed paren?
+        if (s.getSymbol().equals("(")) {
+            n = new PTRef();
+            n.setName(name);
+            //parse the type list. Find out what's in the parameter list
+            String mangle = n.getName().toString() + "$";
+            lex.next();
+            s = lex.next();
+            while (!s.getSymbol().equals(")")){
+                
+                mangle += "_" + s.getSymbol().substring(0,1);
+                s = lex.next();
+            }
+            n.getName().getSymbol().setSymbol(mangle);
+            
+            //s = lex.next();
+            if (!s.getSymbol().equals(")")) {
+                throwParseException("expecting ')'", s);
+            } /*else {
+               //add it to the symbol table
+               String e = n.getName().getSymbol().toString();
+               stab.addFunction(n.getName().getSymbol().toString());//n.getName().toString()
+            }*/
+        }
+        
+        //String t = n.getName().getSymbol().toString();
+        if (!stab.contains(n.getName().toString())) { 
             throwParseException("undefined identifier", n.getName().getSymbol());
-        } else {
+        }
+        else {
             n.setScope(stab.getContainingScope(n.getName().toString()));
         }
         return n;
@@ -793,4 +847,87 @@ public class Parser {
     private final SymbolTable stab;
     private final ArrayList<String> errorMessages;
     private boolean errors;
+
+    private Decl parsePTFun(Type t) throws ParseException{
+        PTFun n= new PTFun();
+        Token s = lex.next();
+        n.setType(t);
+        if(!s.getSymbol().equals("(")){
+        throwParseException("Expecting ( ", s);
+        }
+        s = lex.next();
+        if(!s.getSymbol().equals("*")){
+        throwParseException("Expecting * ", s);
+        
+        }
+        n.setName(parseName());
+        s = lex.next();
+        if(!s.getSymbol().equals(")")){
+        throwParseException("Expecting )", s);
+        }
+        s = lex.next();
+        if(!s.getSymbol().equals("(")){
+        throwParseException("Expecting )", s);
+        }
+        n.setTypeList(parseTypeList());
+//        if (s.getSymbol().equals("=")) {
+//            lex.next();
+//            n.setInit(parseExpression());
+//        }
+        s = lex.next();
+        if(!s.getSymbol().equals(")")){
+        throwParseException("Expecting )", s);
+        }
+        s = lex.next();
+        if (!s.getSymbol().equals(";")) {
+            throwParseException("missing ';'", s);
+        }
+        n.getType().setMangle(n.getNameMangle());
+        stab.add(n.getName(), n.getType());
+       n.getSymbol().setSymbol(n.getNameMangle());
+        stab.add(n.getName(), n.getType());
+        n.setScope(stab.getContainingScope(n.getName().toString()));
+     //   stab.addPtrFunction(n.getName().toString()); //Make Mangle
+        
+        
+       // n.setScope(stab.getCurrentScope());
+        
+    return n;
+    }
+    public TypeList parseTypeList() throws ParseException{
+    TypeList types = new TypeList();
+    Token s = lex.peek();
+    while(!s.getSymbol().equals(")")){
+    types.addType(parseType());
+    s = lex.peek();
+            if (s.getSymbol().equals(",")) {
+                lex.next();
+                s = lex.peek();
+            }else if(!s.getSymbol().equals(")")){
+            throwParseException("Expecting \",\"", s);
+            }
+    }
+    
+    return types;
+    }
+
+    private Proccall parsePTCall() throws ParseException{
+    Token s = lex.next();
+    if(!s.getSymbol().equals("(")){
+   throwParseException("Expecting \"(\"", s);
+    }
+    s = lex.next();
+    if(!s.getSymbol().equals("*")){
+    throwParseException("Expecting \"*\"", s);
+    }
+    //lex.next();
+    // 
+    Name n = parseName();
+   s = lex.next();
+    if(!s.getSymbol().equals(")")){
+      throwParseException("Expecting \")\"", s);  
+        
+    }
+    return parseProccallState(n);
+    }
 }

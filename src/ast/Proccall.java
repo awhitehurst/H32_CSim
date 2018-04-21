@@ -118,6 +118,6 @@ public class Proccall extends Statement {
     }
     //
     private Name name;
-    private ExprList args;
+    protected ExprList args;
 
 }
