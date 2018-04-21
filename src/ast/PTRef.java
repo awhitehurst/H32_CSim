@@ -35,4 +35,43 @@ public class PTRef extends VarRef{
             code.add("\tld " + getQualifiedVariableName());
         }
     }
+     @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<PTRef: ");
+        sb.append(v);
+        sb.append(" (");
+        sb.append(indirect);
+        sb.append(")");
+        if (index != null) {
+            sb.append(" = ");
+            sb.append(index);
+        }
+        sb.append(" >");
+        return sb.toString();
+    }
+        @Override
+    public String format(int indent, boolean suppressNL) {
+        StringBuilder sb = new StringBuilder();
+        if (!suppressNL) {
+            sb.append(indent(indent));
+        }
+        sb.append("[PTRef: ");
+        if (isIndirect()) {
+            for (int i = 0; i < indirect; ++i) {
+                sb.append("*");
+            }
+        }
+        sb.append(this.getVariable().format(indent, true));
+        sb.append(" ");
+        if (isArrayRef()) {
+            sb.append("index: ");
+            sb.append(index.format(indent, true));
+        }
+        sb.append(" ]");
+        if (!suppressNL) {
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }

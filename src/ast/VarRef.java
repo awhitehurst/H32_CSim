@@ -11,10 +11,10 @@ import parser.Scope;
 public class VarRef extends Expression {
 
     
-    private Name v;
-    private Expression index;
-    private int indirect = 0;
-    private Scope scope;
+    protected Name v;
+    protected Expression index;
+    protected int indirect = 0;
+    protected Scope scope;
 
     /**
      * creates an empty variable reference 
