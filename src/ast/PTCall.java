@@ -36,12 +36,31 @@ public class PTCall extends Proccall{
     //This may need to be edited.
         @Override
     public void generate(ArrayList<String> code, boolean inFunction, int offset) {
-        if(args!=null){
-            args.generate(code, inFunction);
+         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        code.add("; PTFun");
+        code.add("\tldc 0");
+        code.add("\tpush");
+        code.add("\tldc " + getName().getName());
+        code.add("\tstr 0");
+        if(getArgs() != null){
+        for(int i = 0; i < getArgs().size(); i++){
+        code.add("\tldc " + getArgs().get(i));
+        code.add("\tpush");
         }
-        code.add("\tcall " + getName().getName() + (args!=null?args.toPolish():"$"));
-        if(args!=null){
-            code.add("\tdloc " + args.size());
         }
-    }
+        code.add("\tldr -1");
+        code.add("\tpush");
+        code.add("\tldr 0");
+        code.add("\tcali");
+        if(getArgs() != null){
+        code.add("\tdloc " + getArgs().size());
+        }
+        code.add("\tstr -1");
+        
+               
+        if(getArgs()!= null){
+            getArgs().generate(code, inFunction);
+            
+        }
+}
 }

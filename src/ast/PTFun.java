@@ -50,10 +50,18 @@ public class PTFun extends VarDecl{
     
     }
 
-    @Override
-    public void generate(ArrayList<String> code, boolean dynamic) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        @Override
+    public void generate(ArrayList<String> code, boolean inFunction) {
+        if (!getType().isStatic() && inFunction) {
+            
+                code.add("\tldr " + getScope().getRelOffset(getVariable().getName()));
+            
+        }
+        else {
+            code.add("\tld " + getQualifiedVariableName());
+        }
     }
+
 
     @Override
     public String format(int indent, boolean suppressNL) {
