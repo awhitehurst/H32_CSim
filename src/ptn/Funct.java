@@ -97,7 +97,9 @@ public RetState getReturn(){
         f.setName(getName().toAST());
         f.setType(getType().toAST());
         f.setScope(getScope());
+        if(getReturn() != null){
         f.setR(getReturn().toAST());
+        }
         if (getParamList() != null) {
             f.setParams(getParamList().toParamList());
         }

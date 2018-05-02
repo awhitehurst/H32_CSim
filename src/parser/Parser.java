@@ -146,13 +146,13 @@ public class Parser {
         RetState ret = n.getReturn();
         String type = n.getType().getSymbol().getSymbol();
         if(ret == null){
-       if(!type.equals("void")){
+       if(!type.equals("void") && !n.isHeader()){
        throwParseException("Expecting return statement", s);
        }
-        }else{
-            if(!stab.checkReturn(n, ret)){
-           throwParseException("Wrong Return type. Expecting " + type, s);
-            }
+//        }else{
+//            if(!stab.checkReturn(n, ret)){
+//           throwParseException("Wrong Return type. Expecting " + type, s);
+//            }
         
         
         }

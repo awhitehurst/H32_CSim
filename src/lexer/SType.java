@@ -198,7 +198,8 @@ public enum SType {
     private static final String[] keywords = {"else", "for", "if",  "main",
         "return", "static", "while",};
     private static final String[] types = {"int", //"float",
-        "char", "bool", "void",};
+        "char", "bool", "void", "string"};
+            
     private static final String idPatternRE = "[a-zA-Z][a-zA-Z0-9_]*";
     private static final Pattern idPattern = Pattern.compile(idPatternRE);
     private static final String ciPatternRE = "[0-9]+";
